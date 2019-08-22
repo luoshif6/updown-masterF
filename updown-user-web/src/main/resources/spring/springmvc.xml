@@ -24,6 +24,10 @@
     <!--<mvc:resources location="/css/" mapping="/css/**"/>-->
     <!--<mvc:resources location="/images/" mapping="//images//**"/>-->
 
+    <mvc:cors>
+        <mvc:mapping path="/**" />
+    </mvc:cors>
+
 
     <!-- 引用dubbo服务 -->
     <dubbo:application name="taotao-user-web"/>

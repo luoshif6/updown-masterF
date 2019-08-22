@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b7e3115-17ae-460b-a11c-4422f1b6f492" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_manager_service_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_manager_service_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_manager_service_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_manager_service_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_manager_web_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_manager_web_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_manager_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_manager_web_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_search_service_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_search_service_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_search_service_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_search_service_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_search_web_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_search_web_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_search_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_search_web_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_sso_service_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_sso_service_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_sso_service_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_sso_service_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_sso_web_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_sso_web_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_sso_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_sso_web_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_user_service_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_user_service_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_user_service_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_user_service_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_user_web_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_user_web_war.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_user_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_user_web_war_exploded.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/updown-manager-web/pom.xml" afterPath="$PROJECT_DIR$/updown-manager-web/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/updown-manager/pom.xml" afterPath="$PROJECT_DIR$/updown-manager/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/updown-manager/updown-manager-dao/updown-manager-dao.iml" afterPath="$PROJECT_DIR$/updown-manager/updown-manager-dao/updown-manager-dao.iml" />
-      <change beforePath="$PROJECT_DIR$/updown-manager/updown-manager-service/updown-manager-service.iml" afterPath="$PROJECT_DIR$/updown-manager/updown-manager-service/updown-manager-service.iml" />
-      <change beforePath="$PROJECT_DIR$/updown-search/updown-search-service/updown-search-service.iml" afterPath="$PROJECT_DIR$/updown-search/updown-search-service/updown-search-service.iml" />
-      <change beforePath="$PROJECT_DIR$/updown-sso/updown-sso-service/updown-sso-service.iml" afterPath="$PROJECT_DIR$/updown-sso/updown-sso-service/updown-sso-service.iml" />
-      <change beforePath="$PROJECT_DIR$/updown-user/updown-user-service/updown-user-service.iml" afterPath="$PROJECT_DIR$/updown-user/updown-user-service/updown-user-service.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/updown-sso/updown-sso-service/target/" />
     <ignored path="$PROJECT_DIR$/updown-manager/updown-manager-pojo/target/" />
@@ -83,12 +60,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/updown-manager-web/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="439">
               <caret line="102" column="31" lean-forward="true" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="176" column="18" lean-forward="true" selection-start-line="176" selection-start-column="18" selection-end-line="176" selection-end-column="18" />
+              <folding>
+                <element signature="e#6788#6792#0" expanded="true" />
+                <element signature="e#6798#6802#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -212,6 +202,11 @@
             <path>
               <item name="updown-parent" type="b2602c69:ProjectViewProjectNode" />
               <item name="updown-parent" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="updown-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="updown-parent" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="updown-parent" type="b2602c69:ProjectViewProjectNode" />
@@ -364,12 +359,20 @@
       <workItem from="1566458331787" duration="27000" />
       <workItem from="1566460992338" duration="170000" />
       <workItem from="1566461190504" duration="32000" />
-      <workItem from="1566461226094" duration="286000" />
+      <workItem from="1566461226094" duration="1137000" />
     </task>
+    <task id="LOCAL-00001" summary="修改manager工程的端口">
+      <created>1566461534898</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566461534898</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1795000" />
+    <option name="totallyTimeSpent" value="2646000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -415,6 +418,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="修改manager工程的端口" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改manager工程的端口" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -437,6 +444,17 @@
         <state relative-caret-position="439">
           <caret line="102" column="31" lean-forward="true" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="176" column="18" lean-forward="true" selection-start-line="176" selection-start-column="18" selection-end-line="176" selection-end-column="18" />
+          <folding>
+            <element signature="e#6788#6792#0" expanded="true" />
+            <element signature="e#6798#6802#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

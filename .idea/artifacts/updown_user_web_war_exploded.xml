@@ -1,13 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="updown-user-web:war exploded">
     <output-path>$PROJECT_DIR$/updown-user-web/target/updown-user-web</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <exploded>true</exploded>
-        <module>updown-user-web</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">

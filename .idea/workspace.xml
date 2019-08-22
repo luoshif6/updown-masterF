@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b7e3115-17ae-460b-a11c-4422f1b6f492" name="Default" comment="" />
+    <list default="true" id="8b7e3115-17ae-460b-a11c-4422f1b6f492" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_manager_service_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_manager_service_war.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_manager_service_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_manager_service_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_manager_web_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_manager_web_war.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_manager_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_manager_web_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_search_service_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_search_service_war.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_search_service_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_search_service_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_search_web_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_search_web_war.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_search_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_search_web_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_sso_service_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_sso_service_war.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_sso_service_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_sso_service_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_sso_web_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_sso_web_war.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_sso_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_sso_web_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_user_service_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_user_service_war.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_user_service_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_user_service_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_user_web_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_user_web_war.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/updown_user_web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/updown_user_web_war_exploded.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/updown-common/updown-common.iml" afterPath="$PROJECT_DIR$/updown-common/updown-common.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-manager-web/updown-manager-web.iml" afterPath="$PROJECT_DIR$/updown-manager-web/updown-manager-web.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-manager/updown-manager-dao/updown-manager-dao.iml" afterPath="$PROJECT_DIR$/updown-manager/updown-manager-dao/updown-manager-dao.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-manager/updown-manager-interface/updown-manager-interface.iml" afterPath="$PROJECT_DIR$/updown-manager/updown-manager-interface/updown-manager-interface.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-manager/updown-manager-pojo/updown-manager-pojo.iml" afterPath="$PROJECT_DIR$/updown-manager/updown-manager-pojo/updown-manager-pojo.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-manager/updown-manager-service/updown-manager-service.iml" afterPath="$PROJECT_DIR$/updown-manager/updown-manager-service/updown-manager-service.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-manager/updown-manager.iml" afterPath="$PROJECT_DIR$/updown-manager/updown-manager.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-parent.iml" afterPath="$PROJECT_DIR$/updown-parent.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-search-web/updown-search-web.iml" afterPath="$PROJECT_DIR$/updown-search-web/updown-search-web.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-search/updown-search-interface/updown-search-interface.iml" afterPath="$PROJECT_DIR$/updown-search/updown-search-interface/updown-search-interface.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-search/updown-search-service/updown-search-service.iml" afterPath="$PROJECT_DIR$/updown-search/updown-search-service/updown-search-service.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-search/updown-search.iml" afterPath="$PROJECT_DIR$/updown-search/updown-search.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-sso-web/updown-sso-web.iml" afterPath="$PROJECT_DIR$/updown-sso-web/updown-sso-web.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-sso/updown-sso-interface/updown-sso-interface.iml" afterPath="$PROJECT_DIR$/updown-sso/updown-sso-interface/updown-sso-interface.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-sso/updown-sso-service/updown-sso-service.iml" afterPath="$PROJECT_DIR$/updown-sso/updown-sso-service/updown-sso-service.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-sso/updown-sso.iml" afterPath="$PROJECT_DIR$/updown-sso/updown-sso.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-user-web/updown-user-web.iml" afterPath="$PROJECT_DIR$/updown-user-web/updown-user-web.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-user/updown-user-interface/updown-user-interface.iml" afterPath="$PROJECT_DIR$/updown-user/updown-user-interface/updown-user-interface.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-user/updown-user-service/updown-user-service.iml" afterPath="$PROJECT_DIR$/updown-user/updown-user-service/updown-user-service.iml" />
+      <change beforePath="$PROJECT_DIR$/updown-user/updown-user.iml" afterPath="$PROJECT_DIR$/updown-user/updown-user.iml" />
+    </list>
     <ignored path="$PROJECT_DIR$/updown-sso/updown-sso-service/target/" />
     <ignored path="$PROJECT_DIR$/updown-manager/updown-manager-pojo/target/" />
     <ignored path="$PROJECT_DIR$/updown-manager/updown-manager-dao/target/" />
@@ -23,6 +61,7 @@
     <ignored path="$PROJECT_DIR$/updown-user-web/target/" />
     <ignored path="$PROJECT_DIR$/updown-search-web/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,11 +84,25 @@
     <expand />
     <select />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -119,12 +172,23 @@
     </entry>
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -136,6 +200,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -162,41 +227,97 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="Applet">
+    <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
+      <option name="WIDTH" value="0" />
+      <option name="HEIGHT" value="0" />
+      <module />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TestNG">
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
       <properties />
       <listeners />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
-      <method v="2">
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -211,51 +332,61 @@
       <workItem from="1565693525355" duration="15000" />
       <workItem from="1566434282949" duration="1159000" />
       <workItem from="1566439068934" duration="106000" />
+      <workItem from="1566439669515" duration="21000" />
+      <workItem from="1566441749846" duration="27000" />
+      <workItem from="1566441784675" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1280000" />
+    <option name="totallyTimeSpent" value="1343000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25737265" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Web" order="2" side_tool="true" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32956153" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Spring" order="10" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
-      <window_info active="true" anchor="right" id="Maven" visible="true" weight="0.3297587" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Database" order="6" weight="0.3297587" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" weight="0.3299356" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26824033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297587" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

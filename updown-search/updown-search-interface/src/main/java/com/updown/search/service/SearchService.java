@@ -1,6 +1,7 @@
-package com.uodown.search.service;
+package com.updown.search.service;
 
-import com.updown.search.service.pojo.SearchData;
+
+import com.updown.common.pojo.SearchData;
 
 import java.util.List;
 

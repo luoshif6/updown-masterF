@@ -1,7 +1,7 @@
 package com.updown.search.controller;
 
-import com.uodown.search.service.SearchService;
-import com.updown.search.service.pojo.SearchData;
+import com.updown.search.service.SearchService;
+import com.updown.common.pojo.SearchData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package com.updown.search.service.repository;
 
-import com.updown.search.service.pojo.SearchData;
+import com.updown.common.pojo.SearchData;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;

@@ -15,16 +15,6 @@
     <packaging>war</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.updown</groupId>
-            <artifactId>updown-search-interface</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.updown</groupId>
-            <artifactId>updown-manager-dao</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -90,12 +80,10 @@
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>${elasticsearch.version}</version>
         </dependency>
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>transport</artifactId>
-            <version>5.5.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -105,12 +93,23 @@
             <groupId>com.updown</groupId>
             <artifactId>updown-manager-interface</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.updown</groupId>
             <artifactId>updown-user-interface</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.updown</groupId>
+            <artifactId>updown-search-interface</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

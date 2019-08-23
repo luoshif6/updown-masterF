@@ -1,4 +1,4 @@
-package com.updown.search.service.pojo;
+package com.updown.common.pojo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;

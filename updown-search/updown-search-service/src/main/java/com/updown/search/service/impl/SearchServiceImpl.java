@@ -1,12 +1,14 @@
 package com.updown.search.service.impl;
 
-import com.uodown.search.service.SearchService;
+import com.updown.common.pojo.SearchData;
 import com.updown.pojo.File;
-import com.updown.search.service.pojo.SearchData;
+import com.updown.search.service.SearchService;
 import com.updown.search.service.repository.SearchDataRepository;
 import com.updown.service.SelectFileService;
 import com.updown.user.service.UserHandleService;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,11 +26,9 @@ public class SearchServiceImpl implements SearchService {
     private UserHandleService userHandleService;
     @Autowired
     private SearchDataRepository searchDataRepository;
-     /*
-     如果是复杂查询需要使用这个查询
-      @Autowired
-      private ElasticsearchTemplate template;
-      */
+    @Autowired
+    private ElasticsearchTemplate template;
+
 
     /**
      * 删除索引库数据
@@ -90,6 +90,17 @@ public class SearchServiceImpl implements SearchService {
         byFileName.addAll(byUserName);
 //        返回f
         return byFileName;
+    }
+
+
+    /**
+     * 创建索引
+     */
+    @Test
+    public void createIndex() {
+
+        template.createIndex(SearchData.class);
+        template.putMapping(SearchData.class);
     }
 
 

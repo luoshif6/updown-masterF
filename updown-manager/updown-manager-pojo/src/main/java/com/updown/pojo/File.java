@@ -1,5 +1,7 @@
 package com.updown.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +22,7 @@ public class File implements Serializable{
     private String file_name;   //文件名称
 
     private String file_url;   //文件路径
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date file_create_time;   //文件创建时间
 
     private Boolean user_type;  //用户类型  true:管理员  false:学生

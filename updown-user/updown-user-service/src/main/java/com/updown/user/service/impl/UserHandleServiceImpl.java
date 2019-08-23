@@ -43,12 +43,12 @@ public class UserHandleServiceImpl implements UserHandleService {
     }
 
     @Override
-    public UpdownResult findUserByUserId(Long user_id) {
+    public User findUserByUserId(Long user_id) {
         if (user_id == null){
             throw new UpException(ExceptionEnum.USER_NOT_FOUND);
         }
         User user = this.userMapper.selectByPrimaryKey(user_id);
-        return UpdownResult.ok(user);
+        return user;
     }
 }
 

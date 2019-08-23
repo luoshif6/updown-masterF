@@ -19,16 +19,25 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 public class SearchData {
     @Id
     @Field(type = FieldType.Long)
-    private Long file_id;  //文件id
+    private Long file_id;       //文件id
 
     @Field(type = FieldType.Keyword)
     private String file_name;   //文件名称
 
     @Field(type = FieldType.Keyword)
-    private Long user_name;  //用户id上传者id
+    private String user_name;     //用户id上传者id
+
+    @Field(type = FieldType.Keyword, index = false)
+    private String file_url;    //文件路径，不索引，不能被搜索
 
 
+    public String getFile_url(String file_url) {
+        return this.file_url;
+    }
 
+    public void setFile_url(String file_url) {
+        this.file_url = file_url;
+    }
 
     public Long getFile_id() {
         return file_id;
@@ -46,11 +55,11 @@ public class SearchData {
         this.file_name = file_name;
     }
 
-    public Long getUser_name() {
+    public String getUser_name() {
         return user_name;
     }
 
-    public void setUser_name(Long user_name) {
+    public void setUser_name(String user_name) {
         this.user_name = user_name;
     }
 }

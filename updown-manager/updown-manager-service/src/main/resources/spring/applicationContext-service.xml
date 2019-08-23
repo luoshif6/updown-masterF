@@ -8,7 +8,8 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
-
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:properties/fileserver.properties" />
     <context:component-scan base-package="com.updown.service"></context:component-scan>
     <!-- 使用dubbo发布服务 -->
     <!-- 提供方应用信息，用于计算依赖关系 -->
@@ -18,6 +19,9 @@
     <dubbo:protocol name="dubbo" port="20880" />
     <!-- 声明需要暴露的服务接口 -->
     <dubbo:service interface="com.updown.service.TestService" ref="testServiceImpl" />
+    <dubbo:service interface="com.updown.service.SelectFileService" ref="selectFileServiceImpl" />
+    <dubbo:service interface="com.updown.service.FileService" ref="fileServiceImpl" />
+    <dubbo:service interface="com.updown.service.TbFileService" ref="tbFileServiceImpl" />
 
 
 </beans>

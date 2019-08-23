@@ -1,18 +1,12 @@
 package com.updown.common.exceptions;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 /**
  * 上传异常枚举类，如果有异常需要全部定义在这里
  *
  * @auther: 闫昊
  * @date: 2019/8/21
  */
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public enum ExceptionEnum {
     /**
      * 枚举：一组相同类型的常量，有固定实例个数，所以要提前设定
@@ -25,9 +19,35 @@ public enum ExceptionEnum {
     USER_NOT_FOUND(404, "用户未查询到"),
     USER_INSERT_FAIL(500, "用户添加失败"),
 
-    USER_DATA_NULL(400,"用户数据为空或者不全"),
-    TASK_SELECT_FAIL(404,"查询任务失败"),
+    USER_DATA_NULL(400, "用户数据为空或者不全"),
+    TASK_SELECT_FAIL(404, "查询任务失败"),
     ;
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    ExceptionEnum(int value, String message) {
+        this.value = value;
+        this.message = message;
+    }
+
+    ExceptionEnum() {
+
+    }
+
     //    状态码
     private int value;
     //    消息

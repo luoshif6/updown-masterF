@@ -3,6 +3,7 @@ package com.updown.sso.controller;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.sso.service.UserExitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,9 @@ public class UserExitController {
     @RequestMapping(value = "logout/{token}",method = RequestMethod.GET)
     public ResponseEntity<UpdownResult> deleteUserStatusByToken(@PathVariable("token") String token){
         UpdownResult updownResult = this.userExitService.deleteUserStatusByToken(token);
-        return ResponseEntity.ok(updownResult);
+        if (updownResult.getStatus() == 200){
+            return ResponseEntity.ok(updownResult);
+        }
+       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(updownResult);
     }
 }

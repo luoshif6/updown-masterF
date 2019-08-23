@@ -39,5 +39,14 @@ public class UserHandleServiceImpl implements UserHandleService {
         this.userMapper.updateByPrimaryKeySelective(user);
         return UpdownResult.ok();
     }
+
+    @Override
+    public UpdownResult findUserByUserId(Long user_id) {
+        if (user_id == null){
+            return UpdownResult.build(400,"用户信息格式有误");
+        }
+        User user = this.userMapper.selectByPrimaryKey(user_id);
+        return UpdownResult.ok(user);
+    }
 }
 

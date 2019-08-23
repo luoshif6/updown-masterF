@@ -1,6 +1,7 @@
 package com.updown.user.controller;
 
 import com.updown.common.pojo.UpdownResult;
+import com.updown.pojo.User;
 import com.updown.user.service.UserHandleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,5 +35,6 @@ public class UserHandleConterlloer {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
+
 
 }

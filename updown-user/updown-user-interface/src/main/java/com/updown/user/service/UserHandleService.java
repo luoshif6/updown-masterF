@@ -14,4 +14,11 @@ public interface UserHandleService {
      */
     UpdownResult updateUserPassword(Long user_id, String user_password);
 
+    /**
+     * 根据用户id查询用户
+     * @param user_id
+     * @return
+     */
+    UpdownResult findUserByUserId(Long user_id);
+
 }

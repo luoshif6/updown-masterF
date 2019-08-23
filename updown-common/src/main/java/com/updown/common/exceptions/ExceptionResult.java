@@ -1,13 +1,12 @@
 package com.updown.common.exceptions;
 
-import lombok.Data;
-
 /**
  * 返回到页面上的结果
+ *
  * @auther: 闫昊
  * @date: 2019/8/21
  */
-@Data
+
 public class ExceptionResult {
     private int status;
 
@@ -19,5 +18,29 @@ public class ExceptionResult {
         this.status = em.getValue();
         this.message = em.getMessage();
         this.timestamp = System.currentTimeMillis();
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 }

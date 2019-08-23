@@ -84,6 +84,12 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--  elasticsearch -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+            <version>2.0.2.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <!-- 配置tomcat插件 -->

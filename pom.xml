@@ -51,8 +51,8 @@
         <quartz.version>2.2.2</quartz.version>
         <persistence.version>1.0</persistence.version>
         <tk.mapper.version>3.3.7</tk.mapper.version>
-        <elasticsearch.version>2.4.0</elasticsearch.version>
-        <spring-data-elasticsearch.version>3.0.12.RELEASE</spring-data-elasticsearch.version>
+<!--        <elasticsearch.version>2.4.0</elasticsearch.version>
+        <spring-data-elasticsearch.version>2.0.4.RELEASE</spring-data-elasticsearch.version>-->
         <spring-test.version>5.0.2.RELEASE</spring-test.version>
     </properties>
     <dependencyManagement>
@@ -246,7 +246,7 @@
                 <scope>provided</scope>
             </dependency>
             <!--elasticSearch-->
-            <dependency>
+        <!--    <dependency>
                 <groupId>org.elasticsearch</groupId>
                 <artifactId>elasticsearch</artifactId>
                 <version>${elasticsearch.version}</version>
@@ -254,13 +254,13 @@
             <dependency>
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>transport</artifactId>
-                <version>5.5.0</version>
+                <version>${elasticsearch.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-elasticsearch</artifactId>
                 <version>${spring-data-elasticsearch.version}</version>
-            </dependency>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
 

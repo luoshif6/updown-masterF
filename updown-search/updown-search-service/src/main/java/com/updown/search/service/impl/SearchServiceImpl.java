@@ -1,24 +1,14 @@
 package com.updown.search.service.impl;
 
-import com.updown.common.pojo.SearchData;
-import com.updown.pojo.File;
 import com.updown.search.service.SearchService;
-import com.updown.search.service.repository.SearchDataRepository;
-import com.updown.service.SelectFileService;
-import com.updown.user.service.UserHandleService;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @auther: 闫昊
  * @date: 2019/8/23
  */
-@Service
+//@Service
 public class SearchServiceImpl implements SearchService {
+/*
 
     @Autowired
     private SelectFileService selectFileService;
@@ -28,6 +18,7 @@ public class SearchServiceImpl implements SearchService {
     private SearchDataRepository searchDataRepository;
     @Autowired
     private ElasticsearchTemplate template;
+*/
 
 
     /**
@@ -35,17 +26,18 @@ public class SearchServiceImpl implements SearchService {
      *
      * @param file_id
      */
-    @Override
+/*    @Override
     public void deleteSearchData(Long file_id) {
 //        根据id删除索引库数据
         searchDataRepository.deleteById(file_id);
-    }
+    }*/
 
     /**
      * 新增索引
      *
      * @param file_id
      */
+/*
     @Override
     public void insertNewSearchData(Long file_id) {
 //        根据文件id查询file
@@ -55,16 +47,17 @@ public class SearchServiceImpl implements SearchService {
 //        保存
         searchDataRepository.save(searchData);
     }
+*/
 
     /**
      * 构建搜索数据，用来存入es索引库的方法
      *
      * @return
      */
-    private SearchData buildSearch(File file) {
-        /**
+/*    private SearchData buildSearch(File file) {
+        *//**
          * 查询所有信息
-         */
+         *//*
         SearchData searchData = new SearchData();
         searchData.setFile_id(file.getFile_id());
         searchData.setFile_name(file.getFile_name());
@@ -72,7 +65,7 @@ public class SearchServiceImpl implements SearchService {
         searchData.getFile_url(file.getFile_url());
 
         return searchData;
-    }
+    }*/
 
     /**
      * 根据搜索条件搜索
@@ -80,6 +73,7 @@ public class SearchServiceImpl implements SearchService {
      * @param key
      * @return
      */
+/*
     @Override
     public List<SearchData> searchByKey(String key) {
 //        搜索数据
@@ -88,20 +82,10 @@ public class SearchServiceImpl implements SearchService {
 //        去重
         byFileName.removeAll(byUserName);
         byFileName.addAll(byUserName);
-//        返回f
+//        返回
         return byFileName;
     }
-
-
-    /**
-     * 创建索引
-     */
-    @Test
-    public void createIndex() {
-
-        template.createIndex(SearchData.class);
-        template.putMapping(SearchData.class);
-    }
+*/
 
 
 }

@@ -1,10 +1,5 @@
 package com.updown.common.pojo;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
-
 /**
  * indexName = 主键名称
  * type = 类型，可以自己写
@@ -15,9 +10,9 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  * @date: 2019/8/23
  */
 
-@Document(indexName = "SearchData", type = "Data", shards = 1, replicas = 1)
+//@Document(indexName = "SearchData", type = "Data", shards = 1, replicas = 1)
 public class SearchData {
-    @Id
+/*    @Id
     @Field(type = FieldType.Long)
     private Long file_id;       //文件id
 
@@ -61,5 +56,5 @@ public class SearchData {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
-    }
+    }*/
 }

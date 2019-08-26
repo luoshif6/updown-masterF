@@ -37,4 +37,5 @@
     <dubbo:reference interface="com.updown.sso.service.UserRegisterService" id="userRegisterService" timeout="300000"/>
     <dubbo:reference interface="com.updown.sso.service.UserLoginService" id="userLoginService" timeout="300000"/>
     <dubbo:reference interface="com.updown.sso.service.UserExitService" id="userExitService" timeout="300000"/>
+    <dubbo:reference interface="com.updown.service.FileService" id="fileService" timeout="300000"/>
 </beans>

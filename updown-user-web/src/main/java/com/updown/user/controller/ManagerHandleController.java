@@ -37,6 +37,7 @@ public class ManagerHandleController {
 
     @Autowired
     private UserLoginService userLoginService;
+
     @Value("${UP_TOKEN_KEY}")
     private String UP_TOKEN_KEY;
 

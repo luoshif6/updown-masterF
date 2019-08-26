@@ -34,6 +34,22 @@ public class SelectFileServiceImpl implements SelectFileService {
         List<File> files = fileMapper.select(f);
         return files;
     }
+    //根据任务id查文件
+    @Override
+    public List<File> selectFileByTaskId(Long task_id) {
+        File f = new File();
+        f.setTask_id(task_id);
+        List<File> files = fileMapper.select(f);
+        return files;
+    }
+    //根据文件id查文件
+    @Override
+    public File selectFileByFileId(Long file_id) {
+
+        return fileMapper.selectByPrimaryKey(file_id);
+
+
+    }
 
     /**
      * 根据file_id查询file

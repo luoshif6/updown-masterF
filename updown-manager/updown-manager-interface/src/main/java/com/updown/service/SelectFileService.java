@@ -21,6 +21,14 @@ public interface SelectFileService {
     /**
      * 根据file_id查询file
      * @param file_id
+     * 通过Task_id查询用户下的文件
+     * @param user_id
+     * @return
+     */
+    List<File> selectFileByTaskId(Long user_id);
+    /**
+     * 通过文件id查询文件在服务器中的地址
+     * @param user_id
      * @return
      */
     File selectFileByFileId(Long file_id);

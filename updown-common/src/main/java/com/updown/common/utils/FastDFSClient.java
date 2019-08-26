@@ -95,13 +95,13 @@ public class FastDFSClient {
      * @return
      * @throws Exception
      */
-    public void downloadFile(String filePath,String fileName) throws Exception {
+    public void downloadFile(String filePath,String fileName,String fileUrl) throws Exception {
 
         String extName = filePath.substring(filePath.lastIndexOf(".")+1);
         // 根据文件标识下载文件
         byte[] by = storageClient.download_file1(filePath);
         // 将数据写入输出流
-        IOUtils.write(by, new FileOutputStream("D:/xiazai/"+fileName+"."+extName));
+        IOUtils.write(by, new FileOutputStream(fileUrl+"/"+fileName+"."+extName));
     }
     /**
      * 删除文件方法

@@ -1,5 +1,7 @@
 package com.updown.user.service.impl;
 
+import com.updown.common.exceptions.ExceptionEnum;
+import com.updown.common.exceptions.UpException;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.mapper.UserMapper;
 import com.updown.pojo.User;
@@ -41,12 +43,12 @@ public class UserHandleServiceImpl implements UserHandleService {
     }
 
     @Override
-    public UpdownResult findUserByUserId(Long user_id) {
+    public User findUserByUserId(Long user_id) {
         if (user_id == null){
-            return UpdownResult.build(400,"用户信息格式有误");
+            throw new UpException(ExceptionEnum.USER_NOT_FOUND);
         }
         User user = this.userMapper.selectByPrimaryKey(user_id);
-        return UpdownResult.ok(user);
+        return user;
     }
 }
 

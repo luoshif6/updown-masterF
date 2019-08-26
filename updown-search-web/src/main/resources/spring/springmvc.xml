@@ -31,7 +31,9 @@
 
     <!-- 引用dubbo服务 -->
     <dubbo:application name="taotao-user-web"/>
-    <dubbo:registry protocol="zookeeper" address="192.168.25.128:2181"/>
-    <!--<dubbo:reference interface="com.updown.user.service.UserHandleService" id="userHandleService" timeout="300000"/>-->
+    <dubbo:registry protocol="zookeeper" address="10.0.43.106:2181"/>
+    <dubbo:reference interface="com.updown.user.service.UserHandleService" id="userHandleService" timeout="300000"/>
+    <dubbo:reference interface="com.updown.search.service.SearchService" id="searchService" timeout="300000"/>
+
 
 </beans>

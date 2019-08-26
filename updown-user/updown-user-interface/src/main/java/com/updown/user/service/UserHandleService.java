@@ -1,6 +1,8 @@
 package com.updown.user.service;
 
 import com.updown.common.pojo.UpdownResult;
+import com.updown.pojo.User;
+
 /**
  * 用户操作
  */
@@ -19,6 +21,6 @@ public interface UserHandleService {
      * @param user_id
      * @return
      */
-    UpdownResult findUserByUserId(Long user_id);
+    User findUserByUserId(Long user_id);
 
 }

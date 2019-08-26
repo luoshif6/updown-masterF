@@ -1,5 +1,7 @@
 package com.updown.service.impl;
 
+import com.updown.common.exceptions.ExceptionEnum;
+import com.updown.common.exceptions.UpException;
 import com.updown.mapper.FileMapper;
 import com.updown.pojo.File;
 import com.updown.service.SelectFileService;
@@ -49,5 +51,22 @@ public class SelectFileServiceImpl implements SelectFileService {
 
     }
 
+    /**
+     * 根据file_id查询file
+     *
+     * @param file_id
+     * @return
+     */
+    @Override
+    public File selectFileByFileId(Long file_id) {
+        if (file_id == null) {
+            throw new UpException(ExceptionEnum.FILE_ID_NULL);
+        }
+        File select = fileMapper.selectByPrimaryKey(file_id);
+        if (select == null) {
+            throw new UpException(ExceptionEnum.FILE_FOUND_FAIL);
+        }
+        return select;
+    }
 
 }

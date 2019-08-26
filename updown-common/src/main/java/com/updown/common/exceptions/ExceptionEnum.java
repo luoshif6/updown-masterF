@@ -21,7 +21,10 @@ public enum ExceptionEnum {
 
     USER_DATA_NULL(400, "用户数据为空或者不全"),
     TASK_SELECT_FAIL(404, "查询任务失败"),
-    FILE_INSERT_ERROR(404,"文件上传失败"),
+    FILE_INSERT_ERROR(404, "文件上传失败"),
+    FILE_ID_NULL(404, "查询file失败，file的id为空"),
+    FILE_FOUND_FAIL(404, "查询文件失败"),
+
     ;
 
     public int getValue() {

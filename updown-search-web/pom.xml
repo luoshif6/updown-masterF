@@ -85,11 +85,18 @@
             <scope>test</scope>
         </dependency>
         <!--  elasticsearch -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-            <version>2.0.2.RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.elasticsearch</groupId>-->
+            <!--<artifactId>elasticsearch</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.elasticsearch.client</groupId>-->
+            <!--<artifactId>transport</artifactId>-->
+        <!--</dependency>-->
+      <!--  <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+        </dependency>-->
     </dependencies>
 
     <!-- 配置tomcat插件 -->

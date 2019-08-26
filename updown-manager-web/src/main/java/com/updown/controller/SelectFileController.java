@@ -26,7 +26,7 @@ public class SelectFileController {
     @Autowired
     private SelectFileService selectFileService;
 
-    @RequestMapping(value = "file/AllFile",method = RequestMethod.GET)
+    @RequestMapping(value = "AllFile",method = RequestMethod.POST)
     public ResponseEntity<UpdownResult> selectAllFile(){
         List<File> files = this.selectFileService.selectAllFile();
         if (CollectionUtils.isEmpty(files)){
@@ -41,9 +41,24 @@ public class SelectFileController {
      * @param user_id
      * @return
      */
-    @RequestMapping(value = "file/userFile",method = RequestMethod.GET)
+    @RequestMapping(value = "userfile",method = RequestMethod.POST)
     public ResponseEntity<UpdownResult> selectFileByUserId(@RequestParam("user_id")Long user_id){
         List<File> files = this.selectFileService.selectFileByUserId(user_id);
+        if (CollectionUtils.isEmpty(files)){
+            //文件列表为空
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404,"未找到文件",null));
+        }
+        return ResponseEntity.ok(UpdownResult.ok(files));
+    }
+
+    /**
+     * 通过Task_id查询用户下的文件
+     * @param user_id
+     * @return
+     */
+    @RequestMapping(value = "taskFile",method = RequestMethod.POST)
+    public ResponseEntity<UpdownResult> selectFileByTaskId(@RequestParam("task_id")Long task_id){
+        List<File> files = this.selectFileService.selectFileByTaskId(task_id);
         if (CollectionUtils.isEmpty(files)){
             //文件列表为空
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404,"未找到文件",null));

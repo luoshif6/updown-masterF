@@ -19,11 +19,14 @@ public class FileServiceImpl implements FileService {
     public UpdownResult createFile(byte[] uploadFile, String extName) {
 
         FastDFSClient fastDFSClient = null;
+
+
         try {
 
             fastDFSClient = new FastDFSClient(conf);
             String url = fastDFSClient.uploadFile(uploadFile, extName);
-            url = IMAGE_SERVER_URL + url;
+            System.out.println(url);
+            //url = IMAGE_SERVER_URL + url;
             return UpdownResult.ok(url);
 
         } catch (Exception e) {
@@ -34,11 +37,11 @@ public class FileServiceImpl implements FileService {
     }
     //文件下载
     @Override
-    public UpdownResult getFile(String filePath, String fileName) {
+    public UpdownResult getFile(String filePath, String fileName,String fileUrl) {
         try {
             //接收文件路径
             FastDFSClient fastDFSClient = new FastDFSClient(conf);
-            fastDFSClient.downloadFile(filePath, fileName);
+            fastDFSClient.downloadFile(filePath, fileName,fileUrl);
             return UpdownResult.ok(UpdownResult.ok());
         } catch (Exception e) {
             // TODO Auto-generated catch block

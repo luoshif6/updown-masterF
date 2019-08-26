@@ -21,8 +21,7 @@ public class FileController {
     private FileService fileService;
 
 
-    //private String IMAGE_SERVER_URL="http://192.168.25.133/";
-    //String conf="D:/DEMO/code/shiyanshimaster-end/updown-masterF/updown-manager/updown-manager-service/src/main/resources/properties/client.conf";
+
 	//文件上传
 	@RequestMapping(value = "/file/upload",method = RequestMethod.POST)
 	@ResponseBody
@@ -52,23 +51,31 @@ public class FileController {
 		
 	
 		
-
-	//文件下载
+    //文件下载
+	/*
+	    filePath:文件在服务器内的地址
+	    fileName：文件要保存的名称
+	    fileUrl：文件要保存的路径
+	 */
 	@RequestMapping("/file/download")
 	@ResponseBody
-	public ResponseEntity<UpdownResult> fileDownload(@RequestParam("filePath")String filePath, @RequestParam("fileName") String fileName) {
+	public ResponseEntity<UpdownResult> fileDownload(@RequestParam("filePath")String filePath, @RequestParam("fileName")String fileName,@RequestParam("fileUrl") String fileUrl) {
 		if (filePath==null || fileName==null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404, "文件下载失败", null));
 
         }
 
-	    this.fileService.getFile(filePath,fileName);
+	    this.fileService.getFile(filePath,fileName,fileUrl);
         return ResponseEntity.ok(UpdownResult.ok());
 
 	}
 
 
 	//文件删除
+    /*
+	    filePath:文件在服务器内的地址
+
+	 */
 	@RequestMapping("/file/delete")
 	@ResponseBody
 	public ResponseEntity<UpdownResult> fileDelete(@RequestParam("filePath")String filePath) {

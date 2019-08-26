@@ -43,4 +43,13 @@ public interface ManagerHandleService {
      */
     List<Task> selectAllTask();
 
+    /**
+     * 根据task_id查询task
+     */
+    Task selectTaskById(Long task_id);
+
+    /**
+     * 根据task_id删除task
+     */
+    void deleteTaskById(Long task_id);
 }

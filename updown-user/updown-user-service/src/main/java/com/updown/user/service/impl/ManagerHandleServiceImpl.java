@@ -94,4 +94,31 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
         return tasks;
     }
 
+    /**
+     * 根据task_id查询task
+     */
+    @Override
+    public Task selectTaskById(Long task_id) {
+        if (task_id == null) {
+            throw new UpException(ExceptionEnum.TASK_ID_NULL);
+        }
+        Task task = taskMapper.selectByPrimaryKey(task_id);
+        if (task == null) {
+            throw new UpException(ExceptionEnum.TASK_SELECT_FAIL);
+        }
+        return task;
+
+    }
+
+    /**
+     * 根据task_id删除task
+     */
+    @Override
+    public void deleteTaskById(Long task_id) {
+        if (task_id == null) {
+            throw new UpException(ExceptionEnum.TASK_ID_NULL);
+        }
+        taskMapper.deleteByPrimaryKey(task_id);
+    }
+
 }

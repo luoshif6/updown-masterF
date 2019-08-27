@@ -124,7 +124,7 @@ public class ManagerHandleController {
         task.setTask_name(task_name);
         task.setTask_create_time(new Date());
         managerHandleService.insertTask(task);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.ok().build();
     }
 
     /**

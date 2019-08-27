@@ -22,6 +22,7 @@ public class File implements Serializable{
     private String file_name;   //文件名称
 
     private String file_url;   //文件路径
+
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date file_create_time;   //文件创建时间
 
@@ -30,6 +31,8 @@ public class File implements Serializable{
     private Long user_id;  //用户id上传者id
 
     private Long task_id;   //作业任务的id
+
+
 
     public Long getFile_id() {
         return file_id;
@@ -98,5 +101,17 @@ public class File implements Serializable{
                 ", user_id=" + user_id +
                 ", task_id=" + task_id +
                 '}';
+    }
+
+    public File(String file_name, String file_url, Date file_create_time, Boolean user_type, Long user_id, Long task_id) {
+        this.file_name = file_name;
+        this.file_url = file_url;
+        this.file_create_time = file_create_time;
+        this.user_type = user_type;
+        this.user_id = user_id;
+        this.task_id = task_id;
+    }
+
+    public File() {
     }
 }

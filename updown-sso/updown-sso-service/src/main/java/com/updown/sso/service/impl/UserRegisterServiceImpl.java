@@ -30,11 +30,10 @@ public class UserRegisterServiceImpl implements UserRegisterService {
     }
 
     @Override
-    public void createUser(User user) {
-        UpdownResult updownResult = new UpdownResult();
+    public UpdownResult createUser(User user) {
         //1.判断user是否为空,并验证数据的有效性
-        if (user == null){
-            return;
+        if (user == null || user.getUser_name() == null || user.getUser_password() == null){
+            return UpdownResult.build(400,"输入错误");
         }
 
         //2.补全属性
@@ -46,6 +45,8 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 
         //4.注册用户
         this.userMapper.insert(user);
+
+        return UpdownResult.ok();
     }
 
 }

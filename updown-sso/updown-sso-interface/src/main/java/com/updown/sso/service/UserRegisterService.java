@@ -1,5 +1,6 @@
 package com.updown.sso.service;
 
+import com.updown.common.pojo.UpdownResult;
 import com.updown.pojo.User;
 
 /**
@@ -19,5 +20,5 @@ public interface UserRegisterService {
      * 用户注册
      * @param user
      */
-    void createUser(User user);
+    UpdownResult createUser(User user);
 }

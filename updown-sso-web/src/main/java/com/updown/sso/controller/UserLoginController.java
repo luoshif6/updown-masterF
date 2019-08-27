@@ -2,9 +2,7 @@ package com.updown.sso.controller;
 
 import com.updown.common.pojo.UpdownResult;
 import com.updown.common.utils.CookieUtils;
-import com.updown.common.utils.JsonUtils;
 import com.updown.pojo.User;
-import com.updown.service.FileService;
 import com.updown.sso.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,13 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("user")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UserLoginController {
 
     @Autowired
     private UserLoginService userLoginService;
 
     @Autowired
-    private FileService fileService;
+    //private FileService fileService;
 
     @Value("${UP_TOKEN_KEY}")
     private String UP_TOKEN_KEY;
@@ -34,15 +33,14 @@ public class UserLoginController {
      *
      * @return
      */
-    @CrossOrigin
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public ResponseEntity<UpdownResult> findUser(@RequestBody String params,
+    public ResponseEntity<UpdownResult> findUser(@RequestParam String user_name,
+                                                 @RequestParam String user_password,
                                                  HttpServletRequest request,
                                                  HttpServletResponse response) {
 //        清空pdf缓存
-        fileService.deletePDFCache();
-        User user = JsonUtils.jsonToPojo(params, User.class);
-        UpdownResult updownResult = this.userLoginService.findUser(user.getUser_name(), user.getUser_password());
+        //fileService.deletePDFCache();
+        UpdownResult updownResult = this.userLoginService.findUser(user_name, user_password);
         if (updownResult.getStatus() == 200) {  //用户名密码都正确,登录成功
             //设置token到cookie中
             CookieUtils.setCookie(request, response, UP_TOKEN_KEY, updownResult.getData().toString());

@@ -108,6 +108,7 @@
                 <configuration>
                     <port>8087</port>
                     <path>/</path>
+                    <uriEncoding>UTF-8</uriEncoding>
                 </configuration>
             </plugin>
         </plugins>

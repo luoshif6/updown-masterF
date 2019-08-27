@@ -36,9 +36,18 @@ public class TbFileController {
     private UserLoginService userLoginService;
 
     //  文件上传
-    @RequestMapping(value = "insertfile", method = RequestMethod.POST)
+    @RequestMapping(value = "insertfile", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<UpdownResult> insertTbFile(@RequestBody File file, HttpServletRequest request) {
+    public ResponseEntity<UpdownResult> insertTbFile(@RequestParam("file_name") String file_name,
+                                                     @RequestParam("file_url") String file_url,
+                                                     @RequestParam("task_id") Long task_id,
+                                                     HttpServletRequest request) {
+
+//        创建文件数据存储信息
+        File file = new File();
+        file.setFile_name(file_name);
+        file.setFile_url(file_url);
+        file.setTask_id(task_id);
 //      如果file为空，抛出异常
         if (file == null) {
             throw new UpException(ExceptionEnum.FILE_INSERT_ERROR);

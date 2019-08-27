@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 
-//文件管理
+/**
+ * 文件与服务器之间的操作
+ * @param
+ */
 @Controller
 @RequestMapping("file")
 public class FileController {
@@ -23,10 +26,15 @@ public class FileController {
     private FileService fileService;
 
 
-    //文件上传
+    /**
+     * 文件上传
+     * @param
+     *
+     * @param
+     */
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<UpdownResult> createfile(@RequestParam("file") MultipartFile uploadFile) {
+    public ResponseEntity<UpdownResult> createfile( @RequestParam("file") MultipartFile uploadFile) {
         try {
 
             if (uploadFile == null) {
@@ -50,12 +58,15 @@ public class FileController {
     }
 
 
-    //文件下载
-	/*
-	    filePath:文件在服务器内的地址
-	    fileName：文件要保存的名称
-	    fileUrl：文件要保存的路径
-	 */
+
+    /**
+     * 文件下载
+     * @param
+     *
+     * @param filePath:文件在服务器内的地址
+     * @param fileName：文件要保存的名称
+     * @param fileUrl：文件要保存的路径
+     */
     @RequestMapping(value = "download",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<UpdownResult> fileDownload(@RequestParam("filePath") String filePath, @RequestParam("fileName") String fileName, @RequestParam("fileUrl") String fileUrl) {
@@ -70,11 +81,11 @@ public class FileController {
     }
 
 
-    //文件删除
-    /*
-	    filePath:文件在服务器内的地址
-
-	 */
+    /**
+     * 文件删除
+     * @param filePath
+     * @return
+     */
     @RequestMapping(value = "delete",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<UpdownResult> fileDelete(@RequestParam("filePath") String filePath) {

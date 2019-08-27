@@ -1,5 +1,6 @@
 package com.updown.service;
 
+import com.updown.common.pojo.UpdownResult;
 import com.updown.pojo.File;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface SelectFileService {
      * 查询所有文件
      * @return
      */
-     List<File> selectAllFile();
+     UpdownResult selectAllFile();
     /**
      * 通过User_id查询用户下的文件
      * @param user_id
@@ -25,7 +26,7 @@ public interface SelectFileService {
      */
     List<File> selectFileByTaskId(Long task_id);
     /**
-     * 通过文件id查询文件在服务器中的地址
+     * 通过文件id查询文件
      * @param file_id
      * @return
      */

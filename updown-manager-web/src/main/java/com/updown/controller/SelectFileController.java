@@ -28,14 +28,17 @@ public class SelectFileController {
     private SelectFileService selectFileService;
 
     @RequestMapping(value = "allfile",method = RequestMethod.GET)
-    public ResponseEntity<UpdownResult> selectAllFile(){
-        List<File> files = this.selectFileService.selectAllFile();
-        if (CollectionUtils.isEmpty(files)){
-            //文件列表为空
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404,"未找到文件",null));
+    public  ResponseEntity<UpdownResult> selectAllFile(){
+        UpdownResult result = this.selectFileService.selectAllFile();
+            if (result.getStatus() == 200) {
+                //查询成功
+                return ResponseEntity.ok(result);
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
-        return ResponseEntity.ok(UpdownResult.ok(files));
-    }
+
+
+
 
     /**
      * 通过User_id查询用户下的文件
@@ -54,7 +57,7 @@ public class SelectFileController {
 
     /**
      * 通过Task_id查询用户下的文件
-     * @param user_id
+     * @param task_id
      * @return
      */
     @RequestMapping(value = "taskfile",method = RequestMethod.GET)

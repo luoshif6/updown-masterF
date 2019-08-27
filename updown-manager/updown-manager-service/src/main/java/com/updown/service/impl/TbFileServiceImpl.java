@@ -8,7 +8,6 @@ import com.updown.pojo.File;
 import com.updown.service.FileService;
 import com.updown.service.SelectFileService;
 import com.updown.service.TbFileService;
-import javafx.beans.DefaultProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,7 +58,7 @@ public class TbFileServiceImpl implements TbFileService {
 
             try {
                  //根据文件id，将服务器内的文件也一并删除
-                this.fileService.deleteFile(this.selectFileService.selectFileByFileId(file_id).getFile_url());
+                fileService.deleteFile(this.selectFileService.selectFileByFileId(file_id).getFile_url());
                 //删除表里的数据
                 int i = this.fileMapper.delete(selectFileService.selectFileByFileId(file_id));
 

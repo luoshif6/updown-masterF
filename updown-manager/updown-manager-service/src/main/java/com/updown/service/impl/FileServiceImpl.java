@@ -19,16 +19,17 @@ public class FileServiceImpl implements FileService {
     //获取配置client文件地址
     private String conf = "classpath:properties/client.conf";
 
-    //文件上传方法
+    /**
+     * 文件上传
+     *
+     * @param
+     */
     @Override
     public UpdownResult createFile(byte[] uploadFile, String extName) {
 
         FastDFSClient fastDFSClient = null;
         try {
-            /*if (extName.equals("doc") || extName.equals("docx")) {
-                System.out.println("进来了");
 
-            }*/
             fastDFSClient = new FastDFSClient(conf);
             String url = fastDFSClient.uploadFile(uploadFile, extName);
             System.out.println(url);
@@ -42,7 +43,11 @@ public class FileServiceImpl implements FileService {
 
     }
 
-    //文件下载
+    /**
+     * 文件下载
+     *
+     * @param filePath，fileName，    fileUrl//代表本地下载位置
+     */
     @Override
     public UpdownResult getFile(String filePath, String fileName, String fileUrl) {
         try {
@@ -56,7 +61,11 @@ public class FileServiceImpl implements FileService {
             return UpdownResult.build(404, "文件下载失败");
         }
     }
-
+    /**
+     * 文件删除
+     *
+     * @param filePath
+     */
     @Override
     public UpdownResult deleteFile(String filePath) {
         try {

@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-/*
-Tb_File表操作
+/**
+ * tb_file 表操作
+ *
+ * @param
+ * @retur
  */
 @Controller
 @RequestMapping("table")
@@ -35,35 +38,39 @@ public class TbFileController {
     @Autowired
     private UserLoginService userLoginService;
 
-    //  文件上传
-    @RequestMapping(value = "insertfile", method = RequestMethod.GET)
+    /**
+     * 上传文件
+     *
+     * @param
+     * @retur
+     */
+    @RequestMapping(value = "insertfile", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<UpdownResult> insertTbFile(@RequestParam("file_name") String file_name,
-                                                     @RequestParam("file_url") String file_url,
-                                                     @RequestParam("task_id") Long task_id,
-                                                     HttpServletRequest request) {
-
-//        创建文件数据存储信息
-        File file = new File();
-        file.setFile_name(file_name);
-        file.setFile_url(file_url);
-        file.setTask_id(task_id);
+    public ResponseEntity<UpdownResult> insertTbFile(@RequestParam("file_name") String file_name, @RequestParam("file_url") String file_url, @RequestParam("task_id") Long task_id, HttpServletRequest request) {
 //      如果file为空，抛出异常
-        if (file == null) {
+        if (file_name == null || file_url==null) {
             throw new UpException(ExceptionEnum.FILE_INSERT_ERROR);
         }
+
 //      获取token
         String token = CookieUtils.getCookieValue(request, UP_TOKEN_KEY);
 //      通过sso的服务获取用户信息
         UpdownResult result = this.userLoginService.findUserByToken(token);
         User user = (User) result.getData();
+        File f = new File();
+        f.setFile_name(file_name);
+        f.setFile_url(file_url);
+        f.setTask_id(task_id);
+        //因暂时无法获得token信息，方便测试，所以加上下面两行
+        f.setUser_type(true);
+        f.setUser_id(Long.valueOf(9));
         if (user != null) {
             //      将用户类型以及用户id存入file对象
-            file.setUser_type(user.getUser_type());
-            file.setUser_id(user.getUser_id());
+            f.setUser_type(user.getUser_type());
+            f.setUser_id(user.getUser_id());
         }
-        this.tbFileService.insertTbFile(file);
-        return ResponseEntity.ok(UpdownResult.ok(file));
+        this.tbFileService.insertTbFile(f);
+        return ResponseEntity.ok(UpdownResult.ok());
 
 
     }

@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("user")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UserRegisterController {
 
     @Autowired
@@ -39,9 +38,12 @@ public class UserRegisterController {
      * @return
      */
     @RequestMapping(value = "register",method = RequestMethod.POST)
-    public ResponseEntity<UpdownResult> register(User user){
-        this.userRegisterService.createUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(UpdownResult.ok());
+    public ResponseEntity<UpdownResult> register(@RequestBody(required = true) User user){
+        UpdownResult result = this.userRegisterService.createUser(user);
+        if (result.getStatus()==200){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
 
 }

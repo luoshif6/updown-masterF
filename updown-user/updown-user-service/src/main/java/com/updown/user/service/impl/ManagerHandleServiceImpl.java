@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -70,10 +69,6 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
      */
     @Override
     public void insertTask(Task task) {
-        task.setTask_id(null);
-        task.setUser_id(task.getUser_id());
-        task.setTask_name(task.getTask_name());
-        task.setTask_create_time(new Date());
         int count = taskMapper.insert(task);
         if (count != 1) {
             throw new UpException(ExceptionEnum.USER_DELETE_EXCEPTION);
@@ -98,7 +93,7 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
      * 根据task_id查询task
      */
     @Override
-    public Task selectTaskById(Long task_id) {
+    public Task selectTaskByTaskId(Long task_id) {
         if (task_id == null) {
             throw new UpException(ExceptionEnum.TASK_ID_NULL);
         }
@@ -114,7 +109,7 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
      * 根据task_id删除task
      */
     @Override
-    public void deleteTaskById(Long task_id) {
+    public void deleteTaskByTaskId(Long task_id) {
         if (task_id == null) {
             throw new UpException(ExceptionEnum.TASK_ID_NULL);
         }

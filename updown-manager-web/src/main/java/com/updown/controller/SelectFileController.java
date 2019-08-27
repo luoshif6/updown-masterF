@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
+@RequestMapping("select")
 public class SelectFileController {
     /**
      * 查询所有的文件
@@ -26,7 +27,7 @@ public class SelectFileController {
     @Autowired
     private SelectFileService selectFileService;
 
-    @RequestMapping(value = "AllFile",method = RequestMethod.POST)
+    @RequestMapping(value = "allfile",method = RequestMethod.GET)
     public ResponseEntity<UpdownResult> selectAllFile(){
         List<File> files = this.selectFileService.selectAllFile();
         if (CollectionUtils.isEmpty(files)){
@@ -41,7 +42,7 @@ public class SelectFileController {
      * @param user_id
      * @return
      */
-    @RequestMapping(value = "userfile",method = RequestMethod.POST)
+    @RequestMapping(value = "userfile",method = RequestMethod.GET)
     public ResponseEntity<UpdownResult> selectFileByUserId(@RequestParam("user_id")Long user_id){
         List<File> files = this.selectFileService.selectFileByUserId(user_id);
         if (CollectionUtils.isEmpty(files)){
@@ -56,7 +57,7 @@ public class SelectFileController {
      * @param user_id
      * @return
      */
-    @RequestMapping(value = "taskFile",method = RequestMethod.POST)
+    @RequestMapping(value = "taskfile",method = RequestMethod.GET)
     public ResponseEntity<UpdownResult> selectFileByTaskId(@RequestParam("task_id")Long task_id){
         List<File> files = this.selectFileService.selectFileByTaskId(task_id);
         if (CollectionUtils.isEmpty(files)){

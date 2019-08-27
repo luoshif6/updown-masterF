@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 //文件管理
 @Controller
+@RequestMapping("file")
 public class FileController {
 
     @Autowired
@@ -23,7 +24,7 @@ public class FileController {
 
 
     //文件上传
-    @RequestMapping(value = "/file/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "upload", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<UpdownResult> createfile(@RequestParam("file") MultipartFile uploadFile) {
         try {
@@ -55,7 +56,7 @@ public class FileController {
 	    fileName：文件要保存的名称
 	    fileUrl：文件要保存的路径
 	 */
-    @RequestMapping("/file/download")
+    @RequestMapping(value = "download",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<UpdownResult> fileDownload(@RequestParam("filePath") String filePath, @RequestParam("fileName") String fileName, @RequestParam("fileUrl") String fileUrl) {
         if (filePath == null || fileName == null) {
@@ -74,7 +75,7 @@ public class FileController {
 	    filePath:文件在服务器内的地址
 
 	 */
-    @RequestMapping("/file/delete")
+    @RequestMapping(value = "delete",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<UpdownResult> fileDelete(@RequestParam("filePath") String filePath) {
         if (filePath == null) {
@@ -90,7 +91,7 @@ public class FileController {
      * @param filePath
      * @return
      */
-    @RequestMapping("/file/preview")
+    @RequestMapping(value = "preview",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> filePreview(@RequestParam("filePath") String filePath) {
         String url = null;

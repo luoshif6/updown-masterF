@@ -62,9 +62,9 @@ public class UserLoginServiceImpl implements UserLoginService {
         client.set(USER_INFO+":"+token, JsonUtils.objectToJson(user));
         //3.3设置过期时间,来模拟session
         client.expire(USER_INFO+":"+token,EXPIRE_TIME);
-        //4把token设置到cookie当中,在表现层设置
+    //4把token设置到cookie当中,在表现层设置
         return UpdownResult.ok(token);
-    }
+}
 
     @Override
     public UpdownResult findUserByToken(String token) {

@@ -1,7 +1,5 @@
 package com.updown.user.controller;
 
-import com.updown.common.exceptions.ExceptionEnum;
-import com.updown.common.exceptions.UpException;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.common.utils.CookieUtils;
 import com.updown.pojo.Task;
@@ -14,12 +12,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -111,18 +110,19 @@ public class ManagerHandleController {
     /**
      * 管理员添加任务
      */
-    @RequestMapping(value = "insertTask", method = RequestMethod.POST)
-    public ResponseEntity<Void> insertTask(@RequestBody Task task, HttpServletRequest request) {
-        if (task == null) {
-            throw new UpException(ExceptionEnum.USER_DATA_NULL);
-        }
+    @RequestMapping(value = "inserttask", method = RequestMethod.POST)
+    public ResponseEntity<Void> insertTask(@RequestParam("task_name") String task_name, HttpServletRequest request) {
 //        获取token
         String token = CookieUtils.getCookieValue(request, UP_TOKEN_KEY);
 //        通过sso的服务获取用户信息
         UpdownResult result = userLoginService.findUserByToken(token);
         User user = (User) result.getData();
-//        存入task
+//      填充task数据
+        Task task = new Task();
+        task.setTask_id(null);
         task.setUser_id(user.getUser_id());
+        task.setTask_name(task_name);
+        task.setTask_create_time(new Date());
         managerHandleService.insertTask(task);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
@@ -130,9 +130,26 @@ public class ManagerHandleController {
     /**
      * 查询所有任务
      */
-    @RequestMapping(value = "selectAll", method = RequestMethod.GET)
+    @RequestMapping(value = "selectall", method = RequestMethod.GET)
     public ResponseEntity<List<Task>> selectAllTask() {
         return ResponseEntity.ok(managerHandleService.selectAllTask());
+    }
+
+    /**
+     * 根据任务id查询任务
+     */
+    @RequestMapping(value = "/selectone/{task_id}", method = RequestMethod.GET)
+    public ResponseEntity<Task> selectTaskByTaskId(@PathVariable("task_id") Long task_id) {
+        return ResponseEntity.ok(managerHandleService.selectTaskByTaskId(task_id));
+    }
+
+    /**
+     * 根据任务id删除任务
+     */
+    @RequestMapping(value = "/deleteone/{task_id}", method = RequestMethod.GET)
+    public ResponseEntity<Void> deleteTaskByTaskId(@PathVariable("task_id") Long task_id) {
+        managerHandleService.deleteTaskByTaskId(task_id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 }

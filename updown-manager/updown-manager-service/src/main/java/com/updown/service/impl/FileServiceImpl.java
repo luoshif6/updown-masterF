@@ -32,7 +32,6 @@ public class FileServiceImpl implements FileService {
 
             fastDFSClient = new FastDFSClient(conf);
             String url = fastDFSClient.uploadFile(uploadFile, extName);
-            System.out.println(url);
             //url = IMAGE_SERVER_URL + url;
             return UpdownResult.ok(url);
 
@@ -46,21 +45,29 @@ public class FileServiceImpl implements FileService {
     /**
      * 文件下载
      *
-     * @param filePath，fileName，    fileUrl//代表本地下载位置
+     * @param filePath，fileName， fileUrl//代表本地下载位置
      */
     @Override
     public UpdownResult getFile(String filePath, String fileName, String fileUrl) {
+        File file = new File("C:/updown/data");
+        if (!file.exists()) {
+            file.mkdirs();
+        }
         try {
             //接收文件路径
             FastDFSClient fastDFSClient = new FastDFSClient(conf);
             fastDFSClient.downloadFile(filePath, fileName, fileUrl);
+//            回收资源，防止文件被占用
+            System.gc();
             return UpdownResult.ok(UpdownResult.ok());
+
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return UpdownResult.build(404, "文件下载失败");
         }
     }
+
     /**
      * 文件删除
      *
@@ -91,24 +98,24 @@ public class FileServiceImpl implements FileService {
     @Override
     public String filePreview(String filePath, String type) {
 //        创建文件夹
-        File file = new File("C:/updownPDF");
+        File file = new File("C:/updown/PreviewCache");
         if (!file.exists()) {
             file.mkdirs();
         }
 //        下载文件到本地
-        getFile(filePath, "pdf处理文件", "C:/updownPDF");
+        getFile(filePath, "pdf处理文件", "C:/updown/PreviewCache/");
         Document document = new Document();
-        File inPutFile = new File("C:/updownPDF/pdf处理文件" + "." + type);
+        File inPutFile = new File("C:/updown/PreviewCache/pdf处理文件" + "." + type);
 //        加载转换文件
         document.loadFromFile(String.valueOf(inPutFile));
 //        设置uuid防止重复
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 //        转换成pdf文件
-        document.saveToFile("C:/updownPDF/" + uuid + ".pdf", FileFormat.PDF);
+        document.saveToFile("C:/updown/PreviewCache/" + uuid + ".pdf", FileFormat.PDF);
 //        第一次删除下载的临时文件
         deleteFile(inPutFile);
 //        返回转换后的文件路径
-        File outPutFile = new File("C:/updownPDF/" + uuid + ".pdf");
+        File outPutFile = new File("C:/updown/PreviewCache/" + uuid + ".pdf");
         System.out.println("文件存储成功！");
 //        关闭转换
         document.close();
@@ -122,7 +129,7 @@ public class FileServiceImpl implements FileService {
      */
     @Override
     public void deletePDFCache() {
-        File file = new File("C:/updownPDF");
+        File file = new File("C:/updown/PreviewCache/");
 //        如果没有该文件夹创建一个
         if (!file.exists()) {
             file.mkdirs();

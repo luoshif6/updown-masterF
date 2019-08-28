@@ -1,6 +1,7 @@
 package com.updown.controller;
 
 import com.updown.common.pojo.UpdownResult;
+import com.updown.pojo.File;
 import com.updown.service.FileService;
 import com.updown.service.SelectFileService;
 import org.apache.commons.lang3.StringUtils;
@@ -43,7 +44,6 @@ public class FileController {
             if (uploadFile == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(400, "无文件"));
             }
-            System.out.println(uploadFile);
             String originalFilename = uploadFile.getOriginalFilename();
             String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
             UpdownResult result = this.fileService.createFile(uploadFile.getBytes(), extName);
@@ -72,12 +72,15 @@ public class FileController {
      */
     @RequestMapping(value = "download", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<UpdownResult> fileDownload(@RequestParam("filePath") String filePath, @RequestParam("fileName") String fileName, @RequestParam("fileUrl") String fileUrl) {
-        if (filePath == null || fileName == null) {
+    public ResponseEntity<UpdownResult> fileDownload(@RequestParam("file_id") Long file_id) {
+        if (file_id == null || file_id == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404, "文件下载失败", null));
-
         }
-
+//        根据file_id查询文件信息
+        File file = selectFileService.selectFileByFileId(file_id);
+        String filePath = file.getFile_url();
+        String fileName = file.getFile_name();
+        String fileUrl = "C:/updown/data";
         this.fileService.getFile(filePath, fileName, fileUrl);
         return ResponseEntity.ok(UpdownResult.ok());
 
@@ -117,7 +120,7 @@ public class FileController {
         String type = StringUtils.substringAfterLast(file_url, ".");
 //        如果是doc或者docx文件转成pdf并下载到本地，返回本地url
         if (type.equals("doc") || type.equals("docx")) {
-            System.out.println("进入doc预览方法处理");
+//            进入doc预览处理方法
             String previewPath = fileService.filePreview(file_url, type);
             url = previewPath;
         } else {

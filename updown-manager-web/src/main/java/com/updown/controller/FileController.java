@@ -2,6 +2,7 @@ package com.updown.controller;
 
 import com.updown.common.pojo.UpdownResult;
 import com.updown.service.FileService;
+import com.updown.service.SelectFileService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 文件与服务器之间的操作
+ *
  * @param
  */
 @Controller
@@ -25,21 +27,23 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
+    @Autowired
+    private SelectFileService selectFileService;
 
     /**
      * 文件上传
-     * @param
      *
+     * @param
      * @param
      */
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<UpdownResult> createfile( @RequestParam("file") MultipartFile uploadFile) {
+    public ResponseEntity<UpdownResult> createfile(@RequestParam("file") MultipartFile uploadFile) {
         try {
-
             if (uploadFile == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(400, "无文件"));
             }
+            System.out.println(uploadFile);
             String originalFilename = uploadFile.getOriginalFilename();
             String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
             UpdownResult result = this.fileService.createFile(uploadFile.getBytes(), extName);
@@ -58,16 +62,15 @@ public class FileController {
     }
 
 
-
     /**
      * 文件下载
-     * @param
      *
+     * @param
      * @param filePath:文件在服务器内的地址
      * @param fileName：文件要保存的名称
      * @param fileUrl：文件要保存的路径
      */
-    @RequestMapping(value = "download",method = RequestMethod.GET)
+    @RequestMapping(value = "download", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<UpdownResult> fileDownload(@RequestParam("filePath") String filePath, @RequestParam("fileName") String fileName, @RequestParam("fileUrl") String fileUrl) {
         if (filePath == null || fileName == null) {
@@ -83,10 +86,11 @@ public class FileController {
 
     /**
      * 文件删除
+     *
      * @param filePath
      * @return
      */
-    @RequestMapping(value = "delete",method = RequestMethod.GET)
+    @RequestMapping(value = "delete", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<UpdownResult> fileDelete(@RequestParam("filePath") String filePath) {
         if (filePath == null) {
@@ -99,25 +103,27 @@ public class FileController {
 
     /**
      * 文件预览
-     * @param filePath
+     *
+     * @param file_id
      * @return
      */
-    @RequestMapping(value = "preview",method = RequestMethod.GET)
+    @RequestMapping(value = "preview", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> filePreview(@RequestParam("filePath") String filePath) {
+    public ResponseEntity<String> filePreview(@RequestParam("file_id") Long file_id) {
+//        根据id获取文件fastDfs的url
+        String file_url = selectFileService.selectFileByFileId(file_id).getFile_url();
         String url = null;
 //        获取文件类型
-        String type = StringUtils.substringAfterLast(filePath, ".");
+        String type = StringUtils.substringAfterLast(file_url, ".");
 //        如果是doc或者docx文件转成pdf并下载到本地，返回本地url
         if (type.equals("doc") || type.equals("docx")) {
             System.out.println("进入doc预览方法处理");
-            String previewPath = fileService.filePreview(filePath, type);
+            String previewPath = fileService.filePreview(file_url, type);
             url = previewPath;
         } else {
 //            如果不是doc文件类型直接返回
-            url = filePath;
+            url = file_url;
         }
-        System.out.println(url);
         return ResponseEntity.ok(url);
     }
 }

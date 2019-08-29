@@ -8,7 +8,7 @@ import com.updown.service.FileService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
+import java.io.*;
 import java.util.UUID;
 
 @Service
@@ -92,41 +92,55 @@ public class FileServiceImpl implements FileService {
 
     /**
      * 文件预览
+     * 流程：下载到本地 -> 处理成pdf(处理后会一起删除处理文件和pdf文件) -> 上传到fastdfs(服务器文件在controller删除)
      *
      * @param filePath
      */
     @Override
     public String filePreview(String filePath, String type) {
+        try {
 //        创建文件夹
-        File file = new File("C:/updown/PreviewCache");
-        if (!file.exists()) {
-            file.mkdirs();
-        }
+            File file = new File("C:/updown/PreviewCache");
+            if (!file.exists()) {
+                file.mkdirs();
+            }
 //        下载文件到本地
-        getFile(filePath, "pdf处理文件", "C:/updown/PreviewCache/");
-        Document document = new Document();
-        File inPutFile = new File("C:/updown/PreviewCache/pdf处理文件" + "." + type);
+            getFile(filePath, "pdf处理文件", "C:/updown/PreviewCache/");
+//        获取处理文件文件
+            File inPutFile = new File("C:/updown/PreviewCache/pdf处理文件" + "." + type);
+//        创建pdf转换对象
+            Document document = new Document();
 //        加载转换文件
-        document.loadFromFile(String.valueOf(inPutFile));
+            document.loadFromFile(String.valueOf(inPutFile));
 //        设置uuid防止重复
-        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+            String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 //        转换成pdf文件
-        document.saveToFile("C:/updown/PreviewCache/" + uuid + ".pdf", FileFormat.PDF);
-//        第一次删除下载的临时文件
-        deleteFile(inPutFile);
-//        返回转换后的文件路径
-        File outPutFile = new File("C:/updown/PreviewCache/" + uuid + ".pdf");
-        System.out.println("文件存储成功！");
+            document.saveToFile("C:/updown/PreviewCache/" + uuid + ".pdf", FileFormat.PDF);
 //        关闭转换
-        document.close();
+            document.close();
+//        第一次删除下载的临时文件
+            deleteFile(inPutFile);
+//        返回转换后的文件路径
+            File uploadFile = new File("C:/updown/PreviewCache/" + uuid + ".pdf");
+//        转换成字节
+            byte[] bytes = file2Byte(uploadFile);
+//            上传
+            UpdownResult result = createFile(bytes, "PDF");
+            deleteFile(uploadFile);
+            String url = result.getData().toString();
 //       第二次删除文件，防止删除失败
-        deleteFile(inPutFile);
-        return String.valueOf(outPutFile);
+            deleteFile(inPutFile);
+            deleteFile(uploadFile);
+            return url;
+        } catch (Exception e) {
+//            如果处理失败返回原路径
+            return filePath;
+        }
     }
 
-    /**
+    /*   *//**
      * 清空预览文件缓存
-     */
+     *//*
     @Override
     public void deletePDFCache() {
         File file = new File("C:/updown/PreviewCache/");
@@ -139,7 +153,7 @@ public class FileServiceImpl implements FileService {
         for (File deleteFile : files) {
             deleteFile.delete();
         }
-    }
+    }*/
 
     /**
      * 删除文件方法，文件预览内使用（filePreview）
@@ -152,5 +166,32 @@ public class FileServiceImpl implements FileService {
             System.gc();    //回收资源
             file.delete();
         }
+    }
+
+    /**
+     * file转字节文件
+     *
+     * @param tradeFile
+     * @return
+     */
+    private byte[] file2Byte(File tradeFile) {
+        byte[] buffer = null;
+        try {
+            FileInputStream fis = new FileInputStream(tradeFile);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] b = new byte[1024];
+            int n;
+            while ((n = fis.read(b)) != -1) {
+                bos.write(b, 0, n);
+            }
+            fis.close();
+            bos.close();
+            buffer = bos.toByteArray();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return buffer;
     }
 }

@@ -1,19 +1,24 @@
 package com.updown.controller;
 
 import com.updown.common.pojo.UpdownResult;
+import com.updown.common.utils.CookieUtils;
 import com.updown.pojo.File;
+import com.updown.pojo.Preview;
+import com.updown.pojo.User;
 import com.updown.service.FileService;
 import com.updown.service.SelectFileService;
+import com.updown.service.TbPreviewService;
+import com.updown.sso.service.UserLoginService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -23,13 +28,23 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Controller
 @RequestMapping("file")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class FileController {
 
     @Autowired
+
     private FileService fileService;
 
     @Autowired
     private SelectFileService selectFileService;
+
+    @Autowired
+    private TbPreviewService tbPreviewService;
+
+    @Autowired
+    private UserLoginService userLoginService;
+    @Value("${UP_TOKEN_KEY}")
+    private String UP_TOKEN_KEY;
 
     /**
      * 文件上传
@@ -70,7 +85,7 @@ public class FileController {
     @RequestMapping(value = "download", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<UpdownResult> fileDownload(@RequestParam("file_id") Long file_id) {
-        if (file_id == null || file_id == null) {
+        if (file_id == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404, "文件下载失败", null));
         }
 //        根据file_id查询文件信息
@@ -85,23 +100,6 @@ public class FileController {
 
 
     /**
-     * 文件删除
-     *
-     * @param filePath
-     * @return
-     */
-    @RequestMapping(value = "delete", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<UpdownResult> fileDelete(@RequestParam("filePath") String filePath) {
-        if (filePath == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404, "文件删除失败", null));
-
-        }
-        this.fileService.deleteFile(filePath);
-        return ResponseEntity.ok(UpdownResult.ok());
-    }
-
-    /**
      * 文件预览
      *
      * @param file_id
@@ -109,10 +107,17 @@ public class FileController {
      */
     @RequestMapping(value = "preview", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<UpdownResult> filePreview(@RequestParam("file_id") Long file_id) throws InterruptedException {
+    public ResponseEntity<UpdownResult> filePreview(@RequestParam("file_id") Long file_id,
+                                                    HttpServletRequest request) {
         if (file_id == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(400, "file_id为空", null));
 
+        }
+
+        Preview preview = tbPreviewService.selectByFileId(file_id);
+        String pdf_file_url = preview.getPdf_file_url();
+        if (pdf_file_url != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(UpdownResult.ok(pdf_file_url));
         }
 //        根据id获取文件fastDfs的url
         String file_url = selectFileService.selectFileByFileId(file_id).getFile_url();
@@ -122,24 +127,31 @@ public class FileController {
 //        如果是doc或者docx文件转成pdf并下载到本地，返回本地url
         if (type.equals("doc") || type.equals("docx")) {
 //            进入doc预览处理方法
-            String previewPath = fileService.filePreview(file_url, type);
-            url = previewPath;
+            UpdownResult previewPath = fileService.filePreview(file_url, type);
+            /**
+             * 获取pdf信息，存到预览表中
+             */
+//           获取token
+            String token = CookieUtils.getCookieValue(request, UP_TOKEN_KEY);
+//          通过sso的服务获取用户信息
+            UpdownResult result = this.userLoginService.findUserByToken(token);
+            User user = (User) result.getData();
+            Preview preview1 = new Preview();
+            preview1.setFile_id(file_id);
+            preview1.setUser_id(user.getUser_id());
+            preview1.setPdf_file_url(previewPath.getData().toString());
+//            存入预览表中
+            tbPreviewService.insertTbPreview(preview1);
 //            判断返回的url是否相同
-            Boolean result = StringUtils.equals(file_url, url);
-            try {
-                System.out.println(url);
-//               如果返回的是pdf的地址最后需要删除它。
-                return ResponseEntity.status(HttpStatus.OK).body(UpdownResult.ok(url));
-            } finally {
-//                如果是新地址就两秒后删除
-                if (!result) {
-                    Thread.sleep(2000);
-                    fileService.deleteFile(url);
-                }
+            if (previewPath.getStatus() == 200) {
+                return ResponseEntity.ok(previewPath);
             }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(previewPath);
         } else {
 //            如果不是doc文件类型直接返回路径
             return ResponseEntity.status(HttpStatus.OK).body(UpdownResult.ok(file_url));
         }
+
     }
+
 }

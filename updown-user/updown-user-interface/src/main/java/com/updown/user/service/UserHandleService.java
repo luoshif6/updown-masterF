@@ -1,6 +1,7 @@
 package com.updown.user.service;
 
 import com.updown.common.pojo.UpdownResult;
+import com.updown.common.pojo.UserBo;
 import com.updown.pojo.User;
 
 /**
@@ -10,11 +11,10 @@ public interface UserHandleService {
 
     /**
      * 修改密码
-     * @param user_id
-     * @param user_password
+     * @param user
      * @return
      */
-    UpdownResult updateUserPassword(Long user_id, String user_password);
+    UpdownResult updateUserPassword(UserBo user);
 
     /**
      * 根据用户id查询用户
@@ -22,7 +22,5 @@ public interface UserHandleService {
      * @return
      */
     User findUserByUserId(Long user_id);
-
-
 
 }

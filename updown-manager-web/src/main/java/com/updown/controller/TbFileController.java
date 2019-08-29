@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("table")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class TbFileController {
 
     @Value("${UP_TOKEN_KEY}")
@@ -46,8 +47,11 @@ public class TbFileController {
      */
     @RequestMapping(value = "insertfile", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<UpdownResult> insertTbFile(@RequestParam("file_name") String file_name, @RequestParam("file_url") String file_url, @RequestParam("task_id") Long task_id, HttpServletRequest request) {
-//      如果file为空，抛出异常
+    public ResponseEntity<UpdownResult> insertTbFile(@RequestParam("file_name") String file_name,
+                                                     @RequestParam("file_url") String file_url,
+                                                     @RequestParam("task_id") Long task_id,
+                                                     HttpServletRequest request) {
+//      如果file为空，抛出异常xx
         if (file_name == null || file_url==null) {
             throw new UpException(ExceptionEnum.FILE_INSERT_ERROR);
         }
@@ -81,7 +85,7 @@ public class TbFileController {
      * @param file_id
      * @retur
      */
-    @RequestMapping(value = "deletefile", method = RequestMethod.GET)
+    @RequestMapping(value = "deletefile", method = RequestMethod.DELETE)
     public ResponseEntity<UpdownResult> deleteUserById(@RequestParam("file_id") Long file_id) {
         UpdownResult result = this.tbFileService.deleteTbFileById(file_id);
         if (result.getStatus() == 200) {

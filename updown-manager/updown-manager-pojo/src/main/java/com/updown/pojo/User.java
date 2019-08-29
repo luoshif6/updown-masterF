@@ -1,6 +1,5 @@
 package com.updown.pojo;
 
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +26,6 @@ public class User implements Serializable{
     private String user_number;  //教师工号或者学生学号
 
     private Date user_create_time;  //用户创建时间
-
 
     public Long getUser_id() {
         return user_id;

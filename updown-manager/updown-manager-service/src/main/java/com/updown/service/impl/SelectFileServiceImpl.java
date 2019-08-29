@@ -2,13 +2,14 @@ package com.updown.service.impl;
 
 import com.updown.common.exceptions.ExceptionEnum;
 import com.updown.common.exceptions.UpException;
-import com.updown.common.pojo.UpdownResult;
 import com.updown.common.pojo.FileInfo;
+import com.updown.common.pojo.UpdownResult;
 import com.updown.mapper.FileMapper;
 import com.updown.pojo.File;
 import com.updown.service.SelectFileService;
 import com.updown.user.service.ManagerHandleService;
 import com.updown.user.service.UserHandleService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,13 +35,16 @@ public class SelectFileServiceImpl implements SelectFileService {
         files.forEach(file -> {
             //将file处理成fileinfo,剔除不需要的信息
             FileInfo fileInfo = new FileInfo();
+            String type = StringUtils.substringAfterLast(file.getFile_url(), ".");
             //设置每个字段的信息
+            fileInfo.setFile_id(file.getFile_id());
             fileInfo.setFile_name(file.getFile_name());
             fileInfo.setFile_create_time(file.getFile_create_time());
             fileInfo.setTask_name(this.managerHandleService.selectTaskByTaskId(file.getTask_id()).getTask_name());
             fileInfo.setUser_name(this.userHandleService.findUserByUserId(file.getUser_id()).getUser_name());
             fileInfo.setFile_create_time(file.getFile_create_time());
             fileInfo.setUser_type(file.getUser_type());
+            fileInfo.setFile_type(type);
             //添加到集合中
              fileInfos.add(fileInfo);
         });
@@ -49,21 +53,58 @@ public class SelectFileServiceImpl implements SelectFileService {
 
     //根据用户id查文件
     @Override
-    public List<File> selectFileByUserId(Long user_id) {
-
+    public UpdownResult selectFileByUserId(Long user_id) {
 
         File f = new File();
         f.setUser_id(user_id);
         List<File> files = fileMapper.select(f);
-        return files;
+
+        List<FileInfo> fileInfos = new ArrayList<>();
+        files.forEach(file -> {
+            //将file处理成fileinfo,剔除不需要的信息
+            FileInfo fileInfo = new FileInfo();
+            String type = StringUtils.substringAfterLast(file.getFile_url(), ".");
+            //设置每个字段的信息
+            fileInfo.setFile_id(file.getFile_id());
+            fileInfo.setFile_name(file.getFile_name());
+            fileInfo.setFile_create_time(file.getFile_create_time());
+            fileInfo.setTask_name(this.managerHandleService.selectTaskByTaskId(file.getTask_id()).getTask_name());
+            fileInfo.setUser_name(this.userHandleService.findUserByUserId(file.getUser_id()).getUser_name());
+            fileInfo.setFile_create_time(file.getFile_create_time());
+            fileInfo.setUser_type(file.getUser_type());
+            fileInfo.setFile_type(type);
+            //添加到集合中
+            fileInfos.add(fileInfo);
+        });
+        return UpdownResult.ok(fileInfos);
+
     }
     //根据任务id查文件
     @Override
-    public List<File> selectFileByTaskId(Long task_id) {
+    public UpdownResult selectFileByTaskId(Long task_id) {
         File f = new File();
         f.setTask_id(task_id);
         List<File> files = fileMapper.select(f);
-        return files;
+
+        List<FileInfo> fileInfos = new ArrayList<>();
+        files.forEach(file -> {
+            //将file处理成fileinfo,剔除不需要的信息
+            FileInfo fileInfo = new FileInfo();
+            String type = StringUtils.substringAfterLast(file.getFile_url(), ".");
+            //设置每个字段的信息
+            fileInfo.setFile_id(file.getFile_id());
+            fileInfo.setFile_name(file.getFile_name());
+            fileInfo.setFile_create_time(file.getFile_create_time());
+            fileInfo.setTask_name(this.managerHandleService.selectTaskByTaskId(file.getTask_id()).getTask_name());
+            fileInfo.setUser_name(this.userHandleService.findUserByUserId(file.getUser_id()).getUser_name());
+            fileInfo.setFile_create_time(file.getFile_create_time());
+            fileInfo.setUser_type(file.getUser_type());
+            fileInfo.setFile_type(type);
+            //添加到集合中
+            fileInfos.add(fileInfo);
+        });
+
+        return UpdownResult.ok(fileInfos);
     }
 
     /**

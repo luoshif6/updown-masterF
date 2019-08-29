@@ -80,7 +80,6 @@ public class TbPreviewServiceImpl implements TbPreviewService {
 
         Preview preview1 = previewMapper.selectOne(preview);
 
-
         return preview1;
     }
 

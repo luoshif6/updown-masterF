@@ -46,7 +46,7 @@ public class SelectFileServiceImpl implements SelectFileService {
             fileInfo.setUser_type(file.getUser_type());
             fileInfo.setFile_type(type);
             //添加到集合中
-             fileInfos.add(fileInfo);
+            fileInfos.add(fileInfo);
         });
         return UpdownResult.ok(fileInfos);
     }
@@ -79,6 +79,7 @@ public class SelectFileServiceImpl implements SelectFileService {
         return UpdownResult.ok(fileInfos);
 
     }
+
     //根据任务id查文件
     @Override
     public UpdownResult selectFileByTaskId(Long task_id) {
@@ -123,6 +124,22 @@ public class SelectFileServiceImpl implements SelectFileService {
             throw new UpException(ExceptionEnum.FILE_FOUND_FAIL);
         }
         return select;
+    }
+
+    /**
+     * 根据url查询file
+     *
+     * @param file_url
+     * @return
+     */
+    @Override
+    public File selectFileByFileUrl(String file_url) {
+        File file = new File();
+        System.out.println(file_url);
+        file.setFile_url(file_url);
+        File one = fileMapper.selectOne(file);
+        System.out.println(one);
+        return one;
     }
 
 }

@@ -52,7 +52,7 @@ public class TbFileController {
                                                      @RequestParam("task_id") Long task_id,
                                                      HttpServletRequest request) {
 //      如果file为空，抛出异常xx
-        if (file_name == null || file_url==null) {
+        if (file_name == null || file_url == null) {
             throw new UpException(ExceptionEnum.FILE_INSERT_ERROR);
         }
 
@@ -61,19 +61,19 @@ public class TbFileController {
 //      通过sso的服务获取用户信息
         UpdownResult result = this.userLoginService.findUserByToken(token);
         User user = (User) result.getData();
-        File f = new File();
-        f.setFile_name(file_name);
-        f.setFile_url(file_url);
-        f.setTask_id(task_id);
+        File file = new File();
+        file.setFile_name(file_name);
+        file.setFile_url(file_url);
+        file.setTask_id(task_id);
         //因暂时无法获得token信息，方便测试，所以加上下面两行
-        f.setUser_type(true);
-        f.setUser_id(Long.valueOf(9));
+        file.setUser_type(true);
+        file.setUser_id(Long.valueOf(9));
         if (user != null) {
             //      将用户类型以及用户id存入file对象
-            f.setUser_type(user.getUser_type());
-            f.setUser_id(user.getUser_id());
+            file.setUser_type(user.getUser_type());
+            file.setUser_id(user.getUser_id());
         }
-        this.tbFileService.insertTbFile(f);
+        this.tbFileService.insertTbFile(file);
         return ResponseEntity.ok(UpdownResult.ok());
 
 

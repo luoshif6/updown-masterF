@@ -20,5 +20,5 @@
     <dubbo:service interface="com.updown.user.service.UserHandleService" ref="userHandleServiceImpl" timeout="300000"/>
     <dubbo:service interface="com.updown.user.service.ManagerHandleService" ref="managerHandleServiceImpl" timeout="300000"/>
 
-    <dubbo:reference interface="com.updown.sso.service.UserExitService" id="UserExitService" timeout="300000"/>
+    <dubbo:reference interface="com.updown.sso.service.UserExitService" id="userExitService" timeout="300000"/>
 </beans>

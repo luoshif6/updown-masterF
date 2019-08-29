@@ -22,10 +22,12 @@
     <dubbo:service interface="com.updown.service.SelectFileService" ref="selectFileServiceImpl" />
     <dubbo:service interface="com.updown.service.FileService" ref="fileServiceImpl" />
     <dubbo:service interface="com.updown.service.TbFileService" ref="tbFileServiceImpl" />
+    <dubbo:service interface="com.updown.service.TbPreviewService" ref="tbPreviewServiceImpl" />
 
 
 
     <dubbo:reference interface="com.updown.user.service.ManagerHandleService" id="managerHandleService" />
     <dubbo:reference interface="com.updown.user.service.UserHandleService" id="userHandleService" />
+
 
 </beans>

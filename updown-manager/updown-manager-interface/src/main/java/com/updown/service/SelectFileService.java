@@ -7,11 +7,14 @@ import com.updown.pojo.File;
 public interface SelectFileService {
     /**
      * 查询所有文件
+     *
      * @return
      */
-     UpdownResult selectAllFile();
+    UpdownResult selectAllFile();
+
     /**
      * 通过User_id查询用户下的文件
+     *
      * @param user_id
      * @return
      */
@@ -19,16 +22,26 @@ public interface SelectFileService {
 
     /**
      * 通过Task_id查询用户下的文件
+     *
      * @param task_id
      * @return
      */
     UpdownResult selectFileByTaskId(Long task_id);
+
     /**
      * 通过文件id查询文件
+     *
      * @param file_id
      * @return
      */
     File selectFileByFileId(Long file_id);
+
+    /**
+     * 根据url查询file
+     * @param file_url
+     * @return
+     */
+    File selectFileByFileUrl(String file_url);
 }
 
 

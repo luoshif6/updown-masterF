@@ -1,16 +1,24 @@
 package com.updown.controller;
 
 import com.updown.common.pojo.UpdownResult;
+import com.updown.common.utils.CookieUtils;
 import com.updown.pojo.File;
+import com.updown.pojo.Preview;
+import com.updown.pojo.User;
 import com.updown.service.FileService;
 import com.updown.service.SelectFileService;
+import com.updown.service.TbPreviewService;
+import com.updown.sso.service.UserLoginService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -24,11 +32,19 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileController {
 
     @Autowired
-
     private FileService fileService;
 
     @Autowired
     private SelectFileService selectFileService;
+
+    @Autowired
+    private TbPreviewService tbPreviewService;
+
+    @Autowired
+    private UserLoginService userLoginService;
+
+    @Value("${UP_TOKEN_KEY}")
+    private String UP_TOKEN_KEY;
 
     /**
      * 文件上传
@@ -83,18 +99,25 @@ public class FileController {
     }
 
 
-
     /**
      * 文件预览
+     *
      * @param file_id
      * @return
      */
     @RequestMapping(value = "preview", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<UpdownResult> filePreview(@RequestParam("file_id") Long file_id) throws InterruptedException {
+    public ResponseEntity<UpdownResult> filePreview(@RequestParam("file_id") Long file_id,
+                                                    HttpServletRequest request) {
         if (file_id == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(400, "file_id为空", null));
 
+        }
+//        根据id查询预览对象
+        Preview preview = tbPreviewService.selectByFileId(file_id);
+        if (preview != null) {
+            String pdf_file_url = preview.getPdf_file_url();
+            return ResponseEntity.status(HttpStatus.OK).body(UpdownResult.ok(pdf_file_url));
         }
 //        根据id获取文件fastDfs的url
         String file_url = selectFileService.selectFileByFileId(file_id).getFile_url();
@@ -105,8 +128,23 @@ public class FileController {
         if (type.equals("doc") || type.equals("docx")) {
 //            进入doc预览处理方法
             UpdownResult previewPath = fileService.filePreview(file_url, type);
+            /**
+             * 获取pdf信息，存到预览表中
+             */
+//           获取token
+            String token = CookieUtils.getCookieValue(request, UP_TOKEN_KEY);
+//          通过sso的服务获取用户信息
+            UpdownResult result = this.userLoginService.findUserByToken(token);
+            User user = (User) result.getData();
+            Preview preview1 = new Preview();
+            preview1.setFile_id(file_id);
+//            preview1.setUser_id(user.getUser_id());
+            preview1.setUser_id(4l);
+            preview1.setPdf_file_url(previewPath.getData().toString());
+//            存入预览表中
+            tbPreviewService.insertTbPreview(preview1);
 //            判断返回的url是否相同
-            if (previewPath.getStatus() == 200){
+            if (previewPath.getStatus() == 200) {
                 return ResponseEntity.ok(previewPath);
             }
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(previewPath);

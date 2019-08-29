@@ -20,10 +20,9 @@ public class TbPreviewServiceImpl implements TbPreviewService {
     @Autowired
     private FileService fileService;
 
-    @Autowired
-    private TbPreviewService tbPreviewService;
     /**
      * 插入PDF数据
+     *
      * @param preview
      * @return
      */
@@ -37,7 +36,7 @@ public class TbPreviewServiceImpl implements TbPreviewService {
         preview.setPdf_file_url(preview.getPdf_file_url());
 
         //进行插入操作
-        int count =previewMapper.insert(preview);
+        int count = previewMapper.insert(preview);
         //如果执行结果条数不为1，则抛出异常
         if (count != 1) {
             throw new UpException(ExceptionEnum.USER_INSERT_FAIL);
@@ -47,6 +46,7 @@ public class TbPreviewServiceImpl implements TbPreviewService {
 
     /**
      * 根据user_id删除pdf文件
+     *
      * @param user_id
      * @return
      */
@@ -68,6 +68,7 @@ public class TbPreviewServiceImpl implements TbPreviewService {
 
     /**
      * 根据file_id查询预览文件
+     *
      * @param file_id
      * @return
      */

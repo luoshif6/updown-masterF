@@ -32,7 +32,6 @@ import javax.servlet.http.HttpServletRequest;
 public class FileController {
 
     @Autowired
-
     private FileService fileService;
 
     @Autowired
@@ -43,6 +42,7 @@ public class FileController {
 
     @Autowired
     private UserLoginService userLoginService;
+
     @Value("${UP_TOKEN_KEY}")
     private String UP_TOKEN_KEY;
 
@@ -113,10 +113,10 @@ public class FileController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(400, "file_id为空", null));
 
         }
-
+//        根据id查询预览对象
         Preview preview = tbPreviewService.selectByFileId(file_id);
-        String pdf_file_url = preview.getPdf_file_url();
-        if (pdf_file_url != null) {
+        if (preview != null) {
+            String pdf_file_url = preview.getPdf_file_url();
             return ResponseEntity.status(HttpStatus.OK).body(UpdownResult.ok(pdf_file_url));
         }
 //        根据id获取文件fastDfs的url
@@ -138,7 +138,8 @@ public class FileController {
             User user = (User) result.getData();
             Preview preview1 = new Preview();
             preview1.setFile_id(file_id);
-            preview1.setUser_id(user.getUser_id());
+//            preview1.setUser_id(user.getUser_id());
+            preview1.setUser_id(4l);
             preview1.setPdf_file_url(previewPath.getData().toString());
 //            存入预览表中
             tbPreviewService.insertTbPreview(preview1);

@@ -5,6 +5,9 @@ import com.spire.doc.FileFormat;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.common.utils.FastDFSClient;
 import com.updown.service.FileService;
+import com.updown.service.SelectFileService;
+import com.updown.service.TbPreviewService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,12 @@ public class FileServiceImpl implements FileService {
     private String IMAGE_SERVER_URL;
     //获取配置client文件地址
     private String conf = "classpath:properties/client.conf";
+
+    @Autowired
+    private SelectFileService selectFileService;
+
+    @Autowired
+    private TbPreviewService tbPreviewService;
 
     /**
      * 文件上传
@@ -35,7 +44,8 @@ public class FileServiceImpl implements FileService {
             //url = IMAGE_SERVER_URL + url;
             return UpdownResult.ok(url);
 
-        } catch (Exception e) {
+        } catch (
+                Exception e) {
             e.printStackTrace();
             return UpdownResult.build(404, "文件上传失败");
         }

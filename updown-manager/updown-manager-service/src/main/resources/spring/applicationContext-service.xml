@@ -29,4 +29,5 @@
     <dubbo:reference interface="com.updown.user.service.ManagerHandleService" id="managerHandleService" />
     <dubbo:reference interface="com.updown.user.service.UserHandleService" id="userHandleService" />
 
+
 </beans>

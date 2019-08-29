@@ -66,9 +66,6 @@ public class FileController {
      * 文件下载
      *
      * @param
-     * @param filePath:文件在服务器内的地址
-     * @param fileName：文件要保存的名称
-     * @param fileUrl：文件要保存的路径
      */
     @RequestMapping(value = "download", method = RequestMethod.GET)
     @ResponseBody
@@ -112,7 +109,11 @@ public class FileController {
      */
     @RequestMapping(value = "preview", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> filePreview(@RequestParam("file_id") Long file_id) {
+    public ResponseEntity<UpdownResult> filePreview(@RequestParam("file_id") Long file_id) throws InterruptedException {
+        if (file_id == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(400, "file_id为空", null));
+
+        }
 //        根据id获取文件fastDfs的url
         String file_url = selectFileService.selectFileByFileId(file_id).getFile_url();
         String url = null;
@@ -123,10 +124,22 @@ public class FileController {
 //            进入doc预览处理方法
             String previewPath = fileService.filePreview(file_url, type);
             url = previewPath;
+//            判断返回的url是否相同
+            Boolean result = StringUtils.equals(file_url, url);
+            try {
+                System.out.println(url);
+//               如果返回的是pdf的地址最后需要删除它。
+                return ResponseEntity.status(HttpStatus.OK).body(UpdownResult.ok(url));
+            } finally {
+//                如果是新地址就两秒后删除
+                if (!result) {
+                    Thread.sleep(2000);
+                    fileService.deleteFile(url);
+                }
+            }
         } else {
-//            如果不是doc文件类型直接返回
-            url = file_url;
+//            如果不是doc文件类型直接返回路径
+            return ResponseEntity.status(HttpStatus.OK).body(UpdownResult.ok(file_url));
         }
-        return ResponseEntity.ok(url);
     }
 }

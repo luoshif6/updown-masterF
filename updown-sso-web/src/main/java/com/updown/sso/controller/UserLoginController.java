@@ -38,8 +38,6 @@ public class UserLoginController {
                                                  @RequestParam String user_password,
                                                  HttpServletRequest request,
                                                  HttpServletResponse response) {
-//        清空pdf缓存
-        //fileService.deletePDFCache();
         UpdownResult updownResult = this.userLoginService.findUser(user_name, user_password);
         if (updownResult.getStatus() == 200) {  //用户名密码都正确,登录成功
             //设置token到cookie中

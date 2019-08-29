@@ -20,8 +20,8 @@ public interface FileService {
      */
     String filePreview(String filePath,String type);
 
-    /**
+  /*  *//**
      * 清空预览文件缓存
-     */
-    void deletePDFCache();
+     *//*
+    void deletePDFCache();*/
 }

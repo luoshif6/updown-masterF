@@ -18,7 +18,7 @@ public interface FileService {
      * 文件预览
      * @param filePath
      */
-    String filePreview(String filePath,String type);
+    UpdownResult filePreview(String filePath,String type);
 
   /*  *//**
      * 清空预览文件缓存

@@ -97,7 +97,7 @@ public class FileServiceImpl implements FileService {
      * @param filePath
      */
     @Override
-    public String filePreview(String filePath, String type) {
+    public UpdownResult filePreview(String filePath, String type) {
         try {
 //        创建文件夹
             File file = new File("C:/updown/PreviewCache");
@@ -110,6 +110,7 @@ public class FileServiceImpl implements FileService {
             File inPutFile = new File("C:/updown/PreviewCache/pdf处理文件" + "." + type);
 //        创建pdf转换对象
             Document document = new Document();
+            int a=10/0;
 //        加载转换文件
             document.loadFromFile(String.valueOf(inPutFile));
 //        设置uuid防止重复
@@ -131,10 +132,10 @@ public class FileServiceImpl implements FileService {
 //       第二次删除文件，防止删除失败
             deleteFile(inPutFile);
             deleteFile(uploadFile);
-            return url;
+            return UpdownResult.ok(url);
         } catch (Exception e) {
 //            如果处理失败返回原路径
-            return filePath;
+            return UpdownResult.build(403,"文件预览失败,将下载文件");
         }
     }
 

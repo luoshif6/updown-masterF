@@ -3,8 +3,6 @@ package com.updown.service;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.pojo.File;
 
-import java.util.List;
-
 
 public interface SelectFileService {
     /**
@@ -17,14 +15,14 @@ public interface SelectFileService {
      * @param user_id
      * @return
      */
-     List<File> selectFileByUserId(Long user_id);
+    UpdownResult selectFileByUserId(Long user_id);
 
     /**
      * 通过Task_id查询用户下的文件
      * @param task_id
      * @return
      */
-    List<File> selectFileByTaskId(Long task_id);
+    UpdownResult selectFileByTaskId(Long task_id);
     /**
      * 通过文件id查询文件
      * @param file_id

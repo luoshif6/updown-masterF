@@ -1,6 +1,5 @@
 package com.updown.controller;
 
-
 import com.updown.common.pojo.UpdownResult;
 import com.updown.pojo.File;
 import com.updown.service.SelectFileService;
@@ -9,14 +8,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("select")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class SelectFileController {
     /**
      * 查询所有的文件
@@ -47,7 +49,8 @@ public class SelectFileController {
      */
     @RequestMapping(value = "userfile",method = RequestMethod.GET)
     public ResponseEntity<UpdownResult> selectFileByUserId(@RequestParam("user_id")Long user_id){
-        List<File> files = this.selectFileService.selectFileByUserId(user_id);
+        UpdownResult result = this.selectFileService.selectFileByUserId(user_id);
+        List<File> files = (ArrayList<File>)result.getData();
         if (CollectionUtils.isEmpty(files)){
             //文件列表为空
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404,"未找到文件",null));
@@ -62,7 +65,8 @@ public class SelectFileController {
      */
     @RequestMapping(value = "taskfile",method = RequestMethod.GET)
     public ResponseEntity<UpdownResult> selectFileByTaskId(@RequestParam("task_id")Long task_id){
-        List<File> files = this.selectFileService.selectFileByTaskId(task_id);
+        UpdownResult result = this.selectFileService.selectFileByTaskId(task_id);
+        List<File> files = (ArrayList)result.getData();
         if (CollectionUtils.isEmpty(files)){
             //文件列表为空
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404,"未找到文件",null));

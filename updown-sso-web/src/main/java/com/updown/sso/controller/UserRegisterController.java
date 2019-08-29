@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("user")
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin
 public class UserRegisterController {
 
     @Autowired

@@ -47,6 +47,7 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
             userInfo.setUser_name(user.getUser_name());
             userInfo.setUser_number(user.getUser_number());
             userInfo.setUser_type(user.getUser_type());
+            userInfo.setUser_create_time(user.getUser_create_time());
             //添加到集合中
             userInfos.add(userInfo);
         });

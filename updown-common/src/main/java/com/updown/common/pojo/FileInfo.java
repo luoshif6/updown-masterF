@@ -10,7 +10,7 @@ import java.util.Date;
 public class FileInfo implements Serializable {
 
 
-
+    private Long file_id;
 
     private String file_name;   //文件名称
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
@@ -22,9 +22,15 @@ public class FileInfo implements Serializable {
 
     private String task_name;   //作业任务的name
 
+    private String file_type;  //文件类型
 
+    public Long getFile_id() {
+        return file_id;
+    }
 
-
+    public void setFile_id(Long file_id) {
+        this.file_id = file_id;
+    }
 
     public String getFile_name() {
         return file_name;
@@ -66,5 +72,13 @@ public class FileInfo implements Serializable {
 
     public void setTask_name(String task_name) {
         this.task_name = task_name;
+    }
+
+    public String getFile_type() {
+        return file_type;
+    }
+
+    public void setFile_type(String file_type) {
+        this.file_type = file_type;
     }
 }

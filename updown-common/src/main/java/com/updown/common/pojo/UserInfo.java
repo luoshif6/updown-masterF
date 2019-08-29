@@ -1,6 +1,7 @@
 package com.updown.common.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 用户信息实体类
@@ -13,6 +14,8 @@ public class UserInfo implements Serializable{
     private Boolean user_type;
 
     private String user_number;
+
+    private Date user_create_time;
 
     public Long getUser_id() {
         return user_id;
@@ -44,5 +47,13 @@ public class UserInfo implements Serializable{
 
     public void setUser_number(String user_number) {
         this.user_number = user_number;
+    }
+
+    public Date getUser_create_time() {
+        return user_create_time;
+    }
+
+    public void setUser_create_time(Date user_create_time) {
+        this.user_create_time = user_create_time;
     }
 }

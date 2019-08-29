@@ -6,6 +6,7 @@ import com.updown.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 测试接口
  */
 @Controller
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class TestController {
 
     @Autowired

@@ -109,7 +109,7 @@ public class ManagerHandleController {
      * 管理员添加任务
      */
     @RequestMapping(value = "inserttask", method = RequestMethod.POST)
-    public ResponseEntity<Void> insertTask(@RequestParam("task_name") String task_name, HttpServletRequest request) {
+    public ResponseEntity<Void> insertTask(@RequestParam String task_name, HttpServletRequest request) {
 //        获取token
         String token = CookieUtils.getCookieValue(request, UP_TOKEN_KEY);
 //        通过sso的服务获取用户信息
@@ -144,10 +144,9 @@ public class ManagerHandleController {
     /**
      * 根据任务id删除任务
      */
-    @RequestMapping(value = "/deleteone/{task_id}", method = RequestMethod.GET)
-    public ResponseEntity<Void> deleteTaskByTaskId(@PathVariable("task_id") Long task_id) {
+    @RequestMapping(value = "deleteone", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> deleteTaskByTaskId(@RequestParam("task_id") Long task_id) {
         managerHandleService.deleteTaskByTaskId(task_id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 }

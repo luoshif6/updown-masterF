@@ -88,10 +88,11 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
         TaskInfo taskInfo = new TaskInfo();
         List<TaskInfo> taskInfos = new ArrayList<>();
         for (Task task : tasks) {
+            String user_name = userMapper.selectByPrimaryKey(task.getUser_id()).getUser_name();
             taskInfo.setTask_id(task.getTask_id());
             taskInfo.setTask_name(task.getTask_name());
             taskInfo.setTask_create_time(task.getTask_create_time());
-            taskInfo.setUser_name(userMapper.selectByPrimaryKey(task.getUser_id()).getUser_name());
+            taskInfo.setUser_name(user_name);
             taskInfos.add(taskInfo);
         }
 

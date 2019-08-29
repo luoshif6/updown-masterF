@@ -4,6 +4,7 @@ import com.updown.common.pojo.UpdownResult;
 import com.updown.common.utils.JsonUtils;
 import com.updown.mapper.UserMapper;
 import com.updown.pojo.User;
+import com.updown.service.TbPreviewService;
 import com.updown.sso.jedis.JedisClient;
 import com.updown.sso.service.UserLoginService;
 import org.apache.commons.lang3.StringUtils;
@@ -23,11 +24,16 @@ public class UserLoginServiceImpl implements UserLoginService {
     @Autowired
     private JedisClient client;
 
+    @Autowired
+    private TbPreviewService tbPreviewService;
+
     @Value("${USER_INFO}")
     private String USER_INFO;
 
     @Value("${EXPIRE_TIME}")
     private Integer EXPIRE_TIME;
+
+
 
     @Override
     public UpdownResult findUser(String user_name, String user_password) {
@@ -46,6 +52,8 @@ public class UserLoginServiceImpl implements UserLoginService {
         if (user == null){
             return UpdownResult.build(400,"用户名或者密码错误");
         }
+//        根據用戶id刪除服务器預覽文件
+        tbPreviewService.deleteTbPreviewByUserId(user.getUser_id());
         //2.2将形参传来的密码进行MD5加密,进行和数据库中加密密码进行比较
         String goal_password= DigestUtils.md5DigestAsHex(user_password.getBytes());
         if (!StringUtils.equals(user.getUser_password(),goal_password)){  //校验密码是否相等

@@ -3,6 +3,7 @@ package com.updown.sso.controller;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.common.utils.CookieUtils;
 import com.updown.pojo.User;
+import com.updown.service.TbPreviewService;
 import com.updown.sso.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,7 @@ public class UserLoginController {
     @Autowired
     private UserLoginService userLoginService;
 
-    @Autowired
+
     //private FileService fileService;
 
     @Value("${UP_TOKEN_KEY}")

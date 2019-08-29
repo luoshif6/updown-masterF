@@ -5,6 +5,8 @@ import com.spire.doc.FileFormat;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.common.utils.FastDFSClient;
 import com.updown.service.FileService;
+import com.updown.service.TbPreviewService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -110,7 +112,7 @@ public class FileServiceImpl implements FileService {
             File inPutFile = new File("C:/updown/PreviewCache/pdf处理文件" + "." + type);
 //        创建pdf转换对象
             Document document = new Document();
-            int a=10/0;
+            //int a=10/0;
 //        加载转换文件
             document.loadFromFile(String.valueOf(inPutFile));
 //        设置uuid防止重复

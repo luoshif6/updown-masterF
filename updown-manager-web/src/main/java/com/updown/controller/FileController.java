@@ -9,6 +9,8 @@ import com.updown.service.FileService;
 import com.updown.service.SelectFileService;
 import com.updown.service.TbPreviewService;
 import com.updown.sso.service.UserLoginService;
+import com.updown.user.service.ManagerHandleService;
+import com.updown.user.service.UserHandleService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,6 +45,10 @@ public class FileController {
     @Autowired
     private UserLoginService userLoginService;
 
+    @Autowired
+    private UserHandleService userHandleService;
+    @Autowired
+    private ManagerHandleService managerHandleService;
     @Value("${UP_TOKEN_KEY}")
     private String UP_TOKEN_KEY;
 
@@ -60,14 +66,19 @@ public class FileController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(400, "无文件"));
             }
             String originalFilename = uploadFile.getOriginalFilename();
+            int index = originalFilename.indexOf(".");
+//          filename：文件不包括后缀的名字
+            String filename = originalFilename.substring(0,index);
             String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+
             UpdownResult result = this.fileService.createFile(uploadFile.getBytes(), extName);
             String url = result.getData().toString();
             //响应上传图片的url
+            String v[]={url,filename};
             if (url.equals("error")) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404, "文件上传失败", null));
             } else {
-                return ResponseEntity.ok(UpdownResult.ok(url));
+                return ResponseEntity.ok(UpdownResult.ok(v));
             }
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -91,7 +102,16 @@ public class FileController {
 //        根据file_id查询文件信息
         File file = selectFileService.selectFileByFileId(file_id);
         String filePath = file.getFile_url();
-        String fileName = file.getFile_name();
+        String taskName = managerHandleService.selectTaskByTaskId(file.getTask_id()).getTask_name();
+        String userName = userHandleService.findUserByUserId(file.getUser_id()).getUser_name();
+        if(taskName == null){
+            taskName = "无";
+        }
+        System.out.println(taskName);
+        System.out.println(userName);
+        System.out.println(file.getFile_name());
+        System.out.println("------------------------");
+        String fileName = taskName+"_"+userName+"_"+file.getFile_name();
         String fileUrl = "C:/updown/data";
         this.fileService.getFile(filePath, fileName, fileUrl);
         return ResponseEntity.ok(UpdownResult.ok());

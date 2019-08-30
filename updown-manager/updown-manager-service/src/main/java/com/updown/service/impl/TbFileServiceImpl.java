@@ -4,15 +4,16 @@ import com.updown.common.exceptions.ExceptionEnum;
 import com.updown.common.exceptions.UpException;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.mapper.FileMapper;
+import com.updown.mapper.PreviewMapper;
 import com.updown.pojo.File;
 import com.updown.pojo.Preview;
 import com.updown.service.FileService;
 import com.updown.service.SelectFileService;
 import com.updown.service.TbFileService;
-import com.updown.service.TbPreviewService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -26,23 +27,24 @@ public class TbFileServiceImpl implements TbFileService {
     @Autowired
     private FileService fileService;
     @Autowired
-    private TbPreviewService tbPreviewService;
+    private PreviewMapper previewMapper;
 
     /**
      * 用户添加文件
      *
      * @return
      */
+    @Transactional
     @Override
     public UpdownResult insertTbFile(File file) {
         //补全file属性
         file.setFile_id(null);
-        file.setUser_id(file.getUser_id());
-        file.setFile_name(file.getFile_name());
+//        file.setUser_id(file.getUser_id());
+//        file.setFile_name(file.getFile_name());
         file.setFile_create_time(new Date());
-        file.setFile_url(file.getFile_url());
-        file.setUser_type(file.getUser_type());
-        file.setTask_id(file.getTask_id());
+//        file.setFile_url(file.getFile_url());
+//        file.setUser_type(file.getUser_type());
+//        file.setTask_id(file.getTask_id());
         //进行插入操作
         int count = fileMapper.insert(file);
         //如果执行结果条数不为1，则抛出异常
@@ -55,13 +57,14 @@ public class TbFileServiceImpl implements TbFileService {
         String type = StringUtils.substringAfterLast(file.getFile_url(), ".");
 //        如果是doc或者docx文件转成pdf并下载到本地，返回本地url
         if (type.equals("doc") || type.equals("docx")) {
-//                创建预览文件
+//                创建预览文件并返回路径
             UpdownResult result = fileService.filePreview(file.getFile_url(), type);
             Preview preview = new Preview();
-            preview.setUser_id(selectFileService.selectFileByFileUrl(file.getFile_url()).getUser_id());
+            preview.setUser_id(file.getUser_id());
             preview.setPdf_file_url(result.getData().toString());
             preview.setFile_id(file.getFile_id());
-            tbPreviewService.insertTbPreview(preview);
+//            插入到preview表中
+            previewMapper.insert(preview);
             System.out.println("pdf信息在上传文件时插入完成");
         }
         return UpdownResult.ok();

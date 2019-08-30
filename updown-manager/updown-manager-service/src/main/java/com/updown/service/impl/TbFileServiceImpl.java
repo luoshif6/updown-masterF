@@ -10,6 +10,7 @@ import com.updown.pojo.Preview;
 import com.updown.service.FileService;
 import com.updown.service.SelectFileService;
 import com.updown.service.TbFileService;
+import com.updown.service.TbPreviewService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,8 @@ public class TbFileServiceImpl implements TbFileService {
     private FileService fileService;
     @Autowired
     private PreviewMapper previewMapper;
+    @Autowired
+    private TbPreviewService tbPreviewService;
 
     /**
      * 用户添加文件
@@ -86,7 +89,8 @@ public class TbFileServiceImpl implements TbFileService {
             fileService.deleteFile(this.selectFileService.selectFileByFileId(file_id).getFile_url());
             //删除表里的数据
             int i = this.fileMapper.delete(selectFileService.selectFileByFileId(file_id));
-
+//            删除预览文件和预览文件信息
+            tbPreviewService.deleteTbPreviewByFileId(file_id);
             if (i <= 0) {
                 return UpdownResult.build(404, "删除错误1");
             }

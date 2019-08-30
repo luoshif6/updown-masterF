@@ -3,14 +3,12 @@ package com.updown.service.impl;
 import com.updown.common.exceptions.ExceptionEnum;
 import com.updown.common.exceptions.UpException;
 import com.updown.common.pojo.UpdownResult;
+import com.updown.mapper.PreviewMapper;
 import com.updown.pojo.Preview;
 import com.updown.service.FileService;
 import com.updown.service.TbPreviewService;
-import com.updown.mapper.PreviewMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TbPreviewServiceImpl implements TbPreviewService {
@@ -45,24 +43,22 @@ public class TbPreviewServiceImpl implements TbPreviewService {
     }
 
     /**
-     * 根据user_id删除pdf文件
+     * 根据文件id删除pdf文件
      *
-     * @param user_id
+     * @param file_id
      * @return
      */
     @Override
-    public UpdownResult deleteTbPreviewByUserId(Long user_id) {
+    public UpdownResult deleteTbPreviewByFileId(Long file_id) {
         Preview preview = new Preview();
-        preview.setUser_id(user_id);
+        preview.setFile_id(file_id);
         //查询出符合条件的结果集合
-        List<Preview> previews = previewMapper.select(preview);
+        Preview previews = previewMapper.selectOne(preview);
         //逐条删除
-        previews.forEach(pr -> {
-            //删除服务器中的pdf文件
-            fileService.deleteFile(pr.getPdf_file_url());
-            //删除表中的记录
-            previewMapper.delete(pr);
-        });
+        //删除服务器中的pdf文件
+        fileService.deleteFile(preview.getPdf_file_url());
+        //删除表中的记录
+        previewMapper.delete(preview);
         return UpdownResult.ok();
     }
 

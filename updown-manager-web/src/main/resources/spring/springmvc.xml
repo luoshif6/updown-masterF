@@ -44,6 +44,7 @@
     <dubbo:reference interface="com.updown.service.TbFileService" id="tbFileService" timeout="300000"/>
     <dubbo:reference interface="com.updown.sso.service.UserLoginService" id="userLoginService" timeout="300000"/>
     <dubbo:reference interface="com.updown.service.TbPreviewService" id="tbPreviewService" timeout="300000"/>
-
+    <dubbo:reference interface="com.updown.user.service.ManagerHandleService" id="managerHandleService" />
+    <dubbo:reference interface="com.updown.user.service.UserHandleService" id="userHandleService" />
 
 </beans>

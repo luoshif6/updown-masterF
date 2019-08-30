@@ -6,7 +6,7 @@ public interface TbPreviewService {
     //添加记录
     UpdownResult insertTbPreview(Preview preview);
     //删除记录
-    UpdownResult deleteTbPreviewByUserId(Long user_id);
+    UpdownResult deleteTbPreviewByFileId(Long file_id);
     //根据file_id查预览文件
     Preview selectByFileId(Long file_id);
 }

@@ -5,9 +5,6 @@ import com.spire.doc.FileFormat;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.common.utils.FastDFSClient;
 import com.updown.service.FileService;
-import com.updown.service.SelectFileService;
-import com.updown.service.TbPreviewService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +19,6 @@ public class FileServiceImpl implements FileService {
     //获取配置client文件地址
     private String conf = "classpath:properties/client.conf";
 
-    @Autowired
-    private SelectFileService selectFileService;
-
-    @Autowired
-    private TbPreviewService tbPreviewService;
 
     /**
      * 文件上传

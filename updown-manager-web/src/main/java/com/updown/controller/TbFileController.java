@@ -67,7 +67,7 @@ public class TbFileController {
         file.setTask_id(task_id);
         //因暂时无法获得token信息，方便测试，所以加上下面两行
         file.setUser_type(true);
-        file.setUser_id(Long.valueOf(9));
+        file.setUser_id(9l);
         if (user != null) {
             //      将用户类型以及用户id存入file对象
             file.setUser_type(user.getUser_type());

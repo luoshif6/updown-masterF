@@ -85,14 +85,13 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
     @Override
     public List selectAllTask() {
         List<Task> tasks = taskMapper.selectAll();
-        TaskInfo taskInfo = new TaskInfo();
         List<TaskInfo> taskInfos = new ArrayList<>();
         for (Task task : tasks) {
-            String user_name = userMapper.selectByPrimaryKey(task.getUser_id()).getUser_name();
+            TaskInfo taskInfo = new TaskInfo();
             taskInfo.setTask_id(task.getTask_id());
             taskInfo.setTask_name(task.getTask_name());
             taskInfo.setTask_create_time(task.getTask_create_time());
-            taskInfo.setUser_name(user_name);
+            taskInfo.setUser_name(userMapper.selectByPrimaryKey(task.getUser_id()).getUser_name());
             taskInfos.add(taskInfo);
         }
 

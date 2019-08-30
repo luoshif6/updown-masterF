@@ -111,7 +111,7 @@ public class FileController {
         System.out.println(userName);
         System.out.println(file.getFile_name());
         System.out.println("------------------------");
-        String fileName = taskName+"_"+userName+"_"+file.getFile_name();
+        String fileName = "【任务 "+taskName+"】"+" · "+userName+" · "+file.getFile_name();
         String fileUrl = "C:/updown/data";
         this.fileService.getFile(filePath, fileName, fileUrl);
         return ResponseEntity.ok(UpdownResult.ok());

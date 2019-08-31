@@ -40,7 +40,7 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
     public UpdownResult selectAllUser() {
         List<User> users = this.userMapper.selectAll();
         List<UserInfo> userInfos = new ArrayList<>();
-        users.forEach(user -> {
+        for (User user: users){
             //将user处理成userinfo,剔除不需要的信息
             UserInfo userInfo = new UserInfo();
             //设置每个字段的信息
@@ -51,7 +51,7 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
             userInfo.setUser_create_time(user.getUser_create_time());
             //添加到集合中
             userInfos.add(userInfo);
-        });
+        }
         return UpdownResult.ok(userInfos);
     }
 
@@ -88,10 +88,11 @@ public class ManagerHandleServiceImpl implements ManagerHandleService {
         List<TaskInfo> taskInfos = new ArrayList<>();
         for (Task task : tasks) {
             TaskInfo taskInfo = new TaskInfo();
+            String user_name = userMapper.selectByPrimaryKey(task.getUser_id()).getUser_name();
             taskInfo.setTask_id(task.getTask_id());
             taskInfo.setTask_name(task.getTask_name());
             taskInfo.setTask_create_time(task.getTask_create_time());
-            taskInfo.setUser_name(userMapper.selectByPrimaryKey(task.getUser_id()).getUser_name());
+            taskInfo.setUser_name(user_name);
             taskInfos.add(taskInfo);
         }
 

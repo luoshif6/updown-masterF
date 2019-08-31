@@ -1,5 +1,6 @@
 package com.updown.controller;
 
+import com.updown.common.pojo.RequestFile;
 import com.updown.common.pojo.UpdownResult;
 import com.updown.common.utils.CookieUtils;
 import com.updown.pojo.File;
@@ -60,9 +61,10 @@ public class FileController {
      */
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<UpdownResult> createfile(@RequestParam("file") MultipartFile uploadFile) {
+    public ResponseEntity<UpdownResult> createfile(@ModelAttribute RequestFile requestFile) {
         try {
-            if (uploadFile == null) {
+            MultipartFile uploadFile =  requestFile.getUploadFile();
+            if (uploadFile == null) {http://loaclhost:8089/file/upload
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(400, "无文件"));
             }
             String originalFilename = uploadFile.getOriginalFilename();

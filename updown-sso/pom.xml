@@ -35,10 +35,12 @@
                 <configuration>
                     <port>8082</port>
                     <path>/</path>
+                    <url>http://10.0.43.106:9001/manager/text</url>
+                    <username>tomcat</username>
+                    <password>tomcat</password>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>

@@ -32,7 +32,7 @@ public class SelectFileServiceImpl implements SelectFileService {
     public UpdownResult selectAllFile() {
         List<File> files = this.fileMapper.selectAll();
         List<FileInfo> fileInfos = new ArrayList<>();
-        files.forEach(file -> {
+        for (File file: files){
             //将file处理成fileinfo,剔除不需要的信息
             FileInfo fileInfo = new FileInfo();
             String type = StringUtils.substringAfterLast(file.getFile_url(), ".");
@@ -47,7 +47,7 @@ public class SelectFileServiceImpl implements SelectFileService {
             fileInfo.setFile_type(type);
             //添加到集合中
             fileInfos.add(fileInfo);
-        });
+        }
         return UpdownResult.ok(fileInfos);
     }
 
@@ -60,7 +60,7 @@ public class SelectFileServiceImpl implements SelectFileService {
         List<File> files = fileMapper.select(f);
 
         List<FileInfo> fileInfos = new ArrayList<>();
-        files.forEach(file -> {
+        for(File file: files){
             //将file处理成fileinfo,剔除不需要的信息
             FileInfo fileInfo = new FileInfo();
             String type = StringUtils.substringAfterLast(file.getFile_url(), ".");
@@ -75,7 +75,7 @@ public class SelectFileServiceImpl implements SelectFileService {
             fileInfo.setFile_type(type);
             //添加到集合中
             fileInfos.add(fileInfo);
-        });
+        }
         return UpdownResult.ok(fileInfos);
 
     }
@@ -88,7 +88,7 @@ public class SelectFileServiceImpl implements SelectFileService {
         List<File> files = fileMapper.select(f);
 
         List<FileInfo> fileInfos = new ArrayList<>();
-        files.forEach(file -> {
+        for(File file: files){
             //将file处理成fileinfo,剔除不需要的信息
             FileInfo fileInfo = new FileInfo();
             String type = StringUtils.substringAfterLast(file.getFile_url(), ".");
@@ -103,7 +103,7 @@ public class SelectFileServiceImpl implements SelectFileService {
             fileInfo.setFile_type(type);
             //添加到集合中
             fileInfos.add(fileInfo);
-        });
+        }
 
         return UpdownResult.ok(fileInfos);
     }

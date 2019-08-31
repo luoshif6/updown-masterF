@@ -51,31 +51,35 @@ public class TbFileController {
                                                      @RequestParam("file_url") String file_url,
                                                      @RequestParam("task_id") Long task_id,
                                                      HttpServletRequest request) {
+        try {
 //      如果file为空，抛出异常xx
-        if (file_name == null || file_url == null) {
-            throw new UpException(ExceptionEnum.FILE_INSERT_ERROR);
-        }
+            if (file_name == null || file_url == null) {
+                throw new UpException(ExceptionEnum.FILE_INSERT_ERROR);
+            }
 
 //      获取token
-        String token = CookieUtils.getCookieValue(request, UP_TOKEN_KEY);
+            String token = CookieUtils.getCookieValue(request, UP_TOKEN_KEY);
 //      通过sso的服务获取用户信息
-        UpdownResult result = this.userLoginService.findUserByToken(token);
-        User user = (User) result.getData();
-        File file = new File();
-        file.setFile_name(file_name);
-        file.setFile_url(file_url);
-        file.setTask_id(task_id);
-        //因暂时无法获得token信息，方便测试，所以加上下面两行
-        file.setUser_type(true);
-        file.setUser_id(9l);
-        if (user != null) {
-            //      将用户类型以及用户id存入file对象
-            file.setUser_type(user.getUser_type());
-            file.setUser_id(user.getUser_id());
+            UpdownResult result = this.userLoginService.findUserByToken(token);
+            User user = (User) result.getData();
+            File file = new File();
+            file.setFile_name(file_name);
+            file.setFile_url(file_url);
+            file.setTask_id(task_id);
+            //因暂时无法获得token信息，方便测试，所以加上下面两行
+            //file.setUser_type(true);
+            //file.setUser_id(9l);
+            if (user != null) {
+                //      将用户类型以及用户id存入file对象
+                file.setUser_type(user.getUser_type());
+                file.setUser_id(user.getUser_id());
+            }
+            this.tbFileService.insertTbFile(file);
+            return ResponseEntity.ok(UpdownResult.ok());
+        } catch (UpException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(UpdownResult.build(404,"文件添加失败"));
         }
-        this.tbFileService.insertTbFile(file);
-        return ResponseEntity.ok(UpdownResult.ok());
-
 
     }
 

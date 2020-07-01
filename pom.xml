@@ -48,7 +48,7 @@
         <zkclient.version>0.1</zkclient.version>
         <activemq.version>5.13.0</activemq.version>
         <freemarker.version>2.3.23</freemarker.version>
-        <quartz.version>2.2.2</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
         <persistence.version>1.0</persistence.version>
         <tk.mapper.version>3.3.7</tk.mapper.version>
         <!--        <elasticsearch.version>2.4.0</elasticsearch.version>
